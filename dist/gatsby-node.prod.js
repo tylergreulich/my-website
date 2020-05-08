@@ -1,0 +1,1 @@
+"use strict";var path=require("path");exports.onCreateWebpackConfig=function(e){e.stage;e.actions.setWebpackConfig({resolve:{modules:[path.resolve(__dirname,"src"),"node_modules"]}})};
