@@ -15,11 +15,13 @@ export const PortfolioItem = ({ last = false }) => {
         <div>
           <h4>Kiyoshi's Teriyaki and Sushi</h4>
           <p>
-            When I noticed that one of the highest rated Japanese restaurants in
-            Arizona didn't have a website, I reached out to them to begin
-            solving that problem. Ultimately I created a clean, performant UI
-            and a custom CMS for the employees to update the items on the menu,
-            and Kiyoshi's received an increase in sales by 15%.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sem
+            purus, porttitor sit amet volutpat a, pharetra id purus. Nam lacinia
+            dui ut sem scelerisque eleifend. Nunc neque dui, gravida quis quam
+            a, iaculis suscipit mauris. Aliquam tempor odio magna, in commodo
+            nunc tincidunt nec. Phasellus non lorem rutrum, eleifend sem vel,
+            sollicitudin elit. In a purus elementum, euismod quam vel,
+            sollicitudin ex.
           </p>
         </div>
         <div>
@@ -28,7 +30,10 @@ export const PortfolioItem = ({ last = false }) => {
         </div>
         <div>
           <PortfolioItemButton href="/">Live Site</PortfolioItemButton>
-          <PortfolioItemButton href="https://github.com/tylergreulich/kiyoshi-restaurant">
+          <PortfolioItemButton
+            href="https://github.com/tylergreulich/kiyoshi-restaurant"
+            target="_blank"
+          >
             View Code
           </PortfolioItemButton>
         </div>

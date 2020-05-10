@@ -6,5 +6,7 @@ export const theme = {
     body: "#fff",
     lightGrey: "#fafafa",
     grey: "#f5f5f5",
+    darkGrey: "#acacac",
+    boxShadow: "0 9px 54px -4px rgba(224, 224, 224, 1)",
   },
 }

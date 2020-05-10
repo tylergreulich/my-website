@@ -1,5 +1,4 @@
 import StockImg from "assets/img/stock-img.jpg"
-import { PortfolioButton } from "components/hero/hero.styles.js"
 import styled from "styled-components"
 
 export const PortfolioItemWrapper = styled.div`
@@ -7,7 +6,7 @@ export const PortfolioItemWrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.main.grey};
   height: 500px;
-  box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+  /* box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1); */
 `
 
 export const PortfolioImage = styled.div`
@@ -41,7 +40,17 @@ export const Tech = styled.div`
   font-weight: 600;
 `
 
-export const PortfolioItemButton = styled(PortfolioButton)`
+export const PortfolioItemButton = styled.a`
+  border-radius: 3rem;
+  text-align: center;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-family: Lato;
   padding: 0.4rem 0.8rem;
   letter-spacing: 0.1rem;
   font-size: 0.65rem;

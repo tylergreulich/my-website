@@ -1,0 +1,137 @@
+---
+path: "/types-vs-interfaces"
+title: "Types vs Interfaces in TypeScript"
+date: "2020-02-23"
+featuredImg: "./images/post-two-featured-img.jpg"
+---
+
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+import PageQuoteText from "utils/pageQuoteText"
+import WhatAreDifferences from "posts/types-vs-interfaces/components/WhatAreDifferences"
+import DifferenceHeader from "posts/types-vs-interfaces/components/DifferenceHeader"
+import Conclusion from "posts/types-vs-interfaces/components/Conclusion"
+
+export const typesVsInterfaces = graphql`
+  query TypesVsInterfaces($pagePath: String!) {
+    mdx(frontmatter: { path: { eq: $pagePath } }) {
+      frontmatter {
+        path
+        title
+        date(formatString: "MMMM DD, YYYY")
+        featuredImg {
+          childImageSharp {
+            fluid {
+              src
+              sizes
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+<PageQuoteText>
+  The line that defines when you should be using a TypeScript type or an
+  interface is one that often gets blurred. Let's go over the differences
+  between the two and when you should be using one over the other.
+</PageQuoteText>
+
+<WhatAreDifferences />
+
+<DifferenceHeader>1. Classes cannot implement types</DifferenceHeader>
+
+```typescript
+class Point {
+  x: number
+  y: number
+}
+interface Shape {
+  area: () => number
+}
+type Perimeter = {
+  perimeter: () => number
+}
+// this shape can either be of type Shape and Point
+// or Perimeter and Point
+type RectangleShape = (Shape | Perimeter) & Point
+class Rectangle implements RectangleShape {
+  x = 2
+  y = 3
+
+  area() {
+    return this.x + this.y
+  }
+}
+```
+
+The code here is invalid and doesn't work, because **classes can only implement another class or an interface**. Which makes sense since a class is a blueprint afterall and therefore it can't inherit one or another's shape structure.
+
+However it does make sense to union **Shape** and **Perimeter** on just a regular object:
+
+```typescript
+
+const rectangle: RectangleShape {
+  x: 12,
+  y: 33,
+  area() => {
+    return 2 * (rectangle.x + rectangle.y)
+  },
+  perimeter() => {
+    return rectangle.x + rectangle.y
+  }
+}
+
+```
+
+In this example, the rectangle object **must** contain a method on it that matches the **area** or **perimeter** signature. If not, TypeScript will complain about the lack thereof.
+
+<DifferenceHeader>2. Extending interfaces with types</DifferenceHeader>
+
+Similarly to classes, you can't extend an interface with a type alias if you're using the union operator within your type definition. Just like a class, an interface is a static blueprint, and can't exist in one or another's shape.
+
+```typescript
+type ShapeOrPerimeter = Shape | Perimeter
+
+// Ts error: An interface may only extend a class or another interface
+interface RectangleShape extends ShapeOrPerimeter, Point {}
+```
+
+<DifferenceHeader>3. Declaration merging with types</DifferenceHeader>
+
+While merging declarations may work with interfaces, this is not the case for types. If you're unfamiliar with declaration merging, essentially it's where you define the interface multiple times, and the duplicates merge into one.
+
+```typescript
+interface Box {
+  height: number
+  width: number
+}
+
+interface Box {
+  scale: number
+}
+
+const box: Box = { height: 5, width: 6, scale: 10 }
+```
+
+This doesn't work with type aliases, as a type is a unique entity for both global, and module scope; This is also the only use case in which you should definitely be using interfaces.
+
+Declaration merging via interfaces is very important for when we are writing 3rd party type definitions for libraries that are not authored with TypeScript. That way the user has the option to extend them if need be.
+
+<DifferenceHeader>So, what should I be using for React?</DifferenceHeader>
+
+In general, it doesn't really matter, just be consistent. Personally, I prefer interfaces over types most of the time until I **need** to create a type specifically. This occurs the most when you need to merge declarations coming from types or interfaces into a single type.
+
+For example:
+
+```typescript
+
+interface OwnProps = {...};
+interface StoreProps = {...};
+
+type Props = OwnProps & StoreProps;
+
+```
+
+<Conclusion />

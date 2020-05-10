@@ -1,0 +1,76 @@
+---
+path: "/jwt-vs-sessions"
+title: "Tokens vs Sessions for Authentication"
+date: "2020-03-09"
+featuredImg: "./images/post-three-featured-img.jpg"
+---
+
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
+import PageQuoteText from "utils/pageQuoteText"
+import Differences from "posts/jwt-vs-sessions/components/Differences"
+import HeaderWrapper from "posts/jwt-vs-sessions/components/HeaderWrapper"
+import DiagramImage from "posts/jwt-vs-sessions/components/DiagramImage"
+import Jwt from "./images/jwt-diagram.png"
+import Sessions from "./images/sessions-diagram.png"
+
+export const jwtVsSessions = graphql`
+  query JwtVsSessions($pagePath: String!) {
+    mdx(frontmatter: { path: { eq: $pagePath } }) {
+      frontmatter {
+        path
+        title
+        date(formatString: "MMMM DD, YYYY")
+        featuredImg {
+          childImageSharp {
+            fluid {
+              src
+              sizes
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+<PageQuoteText>
+  Today we'll learn the differences between Token Based Authentication and
+  Sessions, and when to use one over the other, as well as what their strengths
+  are. In the end its app dependent and can also come down to personal
+  preference in some ways.
+</PageQuoteText>
+
+<Differences />
+
+<HeaderWrapper>Session Based Authentication</HeaderWrapper>
+When using sessions for authentication, typically the server will create the session
+for the user once they sign in. The subsequent session ID is then stored in a cookie
+on the user's browser. While the user is signed in, the cookie will persist with
+each following request. Then the server compares the session ID stored on the cookie
+with the session stored in memory to verify the user's identity and sends the appropriate
+response for the corresponding state.
+
+<DiagramImage src={Sessions} />
+
+<HeaderWrapper>Token Based Authentication</HeaderWrapper>
+
+There are many apps that use JWT's (JsonWebToken) as opposed to sessions. When it comes to tokens, the server creates the JWT with a secret and sends the JWT to the client. Typically, the client stores the JWT in local storage, and includes the token in the header with each request. Then, the server validates the JWT with every request from the client and sends the oppropriate response.
+
+<DiagramImage src={Sessions} />
+
+The main difference here is that the state is not stored on the sever, instead it's stored isnide the token on the client. Most modern web apps use Jwt's for authentication due to scalability and mobile authentication reasons.
+
+<HeaderWrapper>Scalability</HeaderWrapper>
+
+**Sessions:** Scaling sessions becomes an issue when there is a huge number of users using the system at once because they're stored in the memory of the server.
+
+**Tokens:** There is no issue with scaling due to the token being stored on the client.
+
+<HeaderWrapper>Multiple Devices</HeaderWrapper>
+
+**Sessions:** Cookies typically work on a single domain or subdomain and are disabled by the browser if they work cross-domain (3rd party cookies). This poses issues when APIs are served from a different domain to mobile and web devices.
+
+**Token based authentication:** There is no issue with cookies as the Jwt's included in the request header.
+
+Jwt's the more recommended method in modern web apps. One drawback with Jwt is that the size of the Jwt is much bigger comparing with the session ID stored in the cookie because Jwt contains more user information. Care must be taken to ensure that only the necessary information is included in the Jwt and sensitive information should be omitted to prevent [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) security attacks.

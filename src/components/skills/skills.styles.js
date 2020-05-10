@@ -14,10 +14,10 @@ export const SkillsContainer = styled.section`
 `
 
 export const FrontendContainer = styled.div`
-  box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);
+  /* box-shadow: ${({ theme }) => theme.main.boxShadow}; */
   width: 100%;
   padding: 2rem;
-  background-color: #f5f5f5;
+  background-color: ${({ theme }) => theme.main.grey};
 `
 
 export const BackendContainer = styled(FrontendContainer)``

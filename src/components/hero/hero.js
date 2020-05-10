@@ -17,15 +17,16 @@ const Hero = () => {
       <ProfileSection>
         <Profile>
           <h1>
-            Tyler <br /> <span>Greulich</span>
+            Tyler
+            <br /> <span>Greulich</span>
           </h1>
           <h5>Web Developer</h5>
           <p>
             My name is Tyler Greulich and I'm a Full-Stack Web Developer that
             enjoys creating applications with a focus on UI / UX while writing
-            robust, elegant code. My main focus outside of coding is attaining
-            fluency in Japanese. Feel free to contact me{" "}
-            <Link to="/contact">here.</Link>
+            robust, elegant code. I'm also language agnostic and can pick up and
+            learn anything you throw at me. Contact me
+            <Link to="/contact"> here.</Link>
           </p>
           <ButtonWrapper>
             <PortfolioButton

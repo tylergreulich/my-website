@@ -1,10 +1,18 @@
+import { navigate, useLocation } from "@reach/router"
 import { MyLogo } from "assets/svg/myLogo"
 import React from "react"
 import { animateScroll as scroll } from "react-scroll"
 import { Header, LogoWrapper, NavLink, NavLinks } from "./navigation.styles"
 
 export const Navigation = () => {
-  const scrollToTop = () => {
+  const location = useLocation()
+
+  const isBlogPost = location.pathname.includes("post")
+
+  const handleClick = () => {
+    if (isBlogPost) {
+      navigate("/")
+    }
     scroll.scrollToTop()
   }
 
@@ -28,7 +36,7 @@ export const Navigation = () => {
 
   return (
     <Header newBgColor={newBgColor}>
-      <LogoWrapper onClick={() => scrollToTop()}>
+      <LogoWrapper onClick={() => handleClick()}>
         <MyLogo />
       </LogoWrapper>
       <NavLinks>
@@ -43,10 +51,14 @@ export const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink>Blog</NavLink>
+          <NavLink to="blog" smooth={true} duration={750} offset={-75}>
+            Blog
+          </NavLink>
         </li>
         <li>
-          <NavLink>Contact</NavLink>
+          <NavLink to="contact" smooth={true} duration={750} offset={-75}>
+            Contact
+          </NavLink>
         </li>
       </NavLinks>
     </Header>

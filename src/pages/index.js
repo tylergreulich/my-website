@@ -3,19 +3,19 @@ import Layout from "components/layout"
 import { Portfolio } from "components/portfolio/portfolio"
 import SEO from "components/seo"
 import { Skills } from "components/skills/skills"
-import { theme } from "components/theme"
 import React from "react"
-import { ThemeProvider } from "styled-components"
+import { Blog } from "../components/blog/blog"
+import { Contact } from "../components/contact/contact"
 
 const IndexPage = () => (
-  <ThemeProvider theme={theme}>
-    <Layout>
-      <SEO title="Home" />
-      <Hero />
-      <Portfolio />
-      <Skills />
-    </Layout>
-  </ThemeProvider>
+  <Layout>
+    <SEO title="Home" />
+    <Hero />
+    <Portfolio />
+    <Skills />
+    <Blog />
+    <Contact />
+  </Layout>
 )
 
 export default IndexPage

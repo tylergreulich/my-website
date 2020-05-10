@@ -14,6 +14,7 @@ export const Header = styled.header`
   font-family: Lato;
   max-width: 100%;
   opacity: ${({ newBgColor }) => (newBgColor ? "0.9" : 1)};
+  z-index: 100;
 `
 
 export const LogoWrapper = styled.div`

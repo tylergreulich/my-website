@@ -7,14 +7,12 @@ exports.PortfolioItemButton = exports.Tech = exports.PortfolioAdCopy = exports.P
 
 var _stockImg = _interopRequireDefault(require("assets/img/stock-img.jpg"));
 
-var _heroStyles = require("components/hero/hero.styles.js");
-
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  padding: 0.4rem 0.8rem;\n  letter-spacing: 0.1rem;\n  font-size: 0.65rem;\n  background-color: transparent;\n  border: 0.25rem solid ", ";\n  color: ", ";\n\n  &:hover {\n    color: ", ";\n    background-color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border-radius: 3rem;\n  text-align: center;\n  display: inline-block;\n  text-transform: uppercase;\n  font-weight: 700;\n  cursor: pointer;\n  margin-right: 1.5rem;\n  text-decoration: none;\n  transition: all 0.3s ease-in-out;\n  font-family: Lato;\n  padding: 0.4rem 0.8rem;\n  letter-spacing: 0.1rem;\n  font-size: 0.65rem;\n  background-color: transparent;\n  border: 0.25rem solid ", ";\n  color: ", ";\n\n  &:hover {\n    color: ", ";\n    background-color: ", ";\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -54,7 +52,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n  display: flex;\n  background-color: ", ";\n  height: 500px;\n  box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n  display: flex;\n  background-color: ", ";\n  height: 500px;\n  /* box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1); */\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -95,7 +93,8 @@ var Tech = _styledComponents["default"].div(_templateObject4(), function (_ref5)
 });
 
 exports.Tech = Tech;
-var PortfolioItemButton = (0, _styledComponents["default"])(_heroStyles.PortfolioButton)(_templateObject5(), function (_ref6) {
+
+var PortfolioItemButton = _styledComponents["default"].a(_templateObject5(), function (_ref6) {
   var theme = _ref6.theme;
   return theme.main.secondary;
 }, function (_ref7) {
@@ -108,4 +107,5 @@ var PortfolioItemButton = (0, _styledComponents["default"])(_heroStyles.Portfoli
   var theme = _ref9.theme;
   return theme.main.secondary;
 });
+
 exports.PortfolioItemButton = PortfolioItemButton;

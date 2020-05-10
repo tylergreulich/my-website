@@ -60,7 +60,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1);\n  width: 100%;\n  padding: 2rem;\n  background-color: #f5f5f5;\n"]);
+  var data = _taggedTemplateLiteral(["\n  /* box-shadow: ", "; */\n  width: 100%;\n  padding: 2rem;\n  background-color: ", ";\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -99,7 +99,13 @@ var SkillsContainer = _styledComponents["default"].section(_templateObject2());
 
 exports.SkillsContainer = SkillsContainer;
 
-var FrontendContainer = _styledComponents["default"].div(_templateObject3());
+var FrontendContainer = _styledComponents["default"].div(_templateObject3(), function (_ref) {
+  var theme = _ref.theme;
+  return theme.main.boxShadow;
+}, function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.main.grey;
+});
 
 exports.FrontendContainer = FrontendContainer;
 var BackendContainer = (0, _styledComponents["default"])(FrontendContainer)(_templateObject4());

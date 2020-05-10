@@ -6,7 +6,7 @@ module.exports = {
     description: "Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.",
     author: "@gatsbyjs"
   },
-  plugins: ["gatsby-plugin-react-helmet", "gatsby-plugin-mdx", {
+  plugins: ["gatsby-plugin-react-helmet", {
     resolve: "gatsby-source-filesystem",
     options: {
       name: "images",
@@ -21,8 +21,40 @@ module.exports = {
       background_color: "#663399",
       theme_color: "#663399",
       display: "minimal-ui",
-      icon: "src/images/gatsby-icon.png" // This path is relative to the root of the site.
+      icon: "src/assets/svg/my-logo-large.png" // This path is relative to the root of the site.
 
+    }
+  }, {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      name: "posts",
+      path: "".concat(__dirname, "/src/posts")
+    }
+  }, {
+    resolve: "gatsby-plugin-mdx",
+    options: {
+      decks: [],
+      defaultLayouts: {
+        // posts: require.resolve('./src/pages/index.tsx'),
+        "default": require.resolve("".concat(__dirname, "/src/components/postLayout.js"))
+      },
+      extensions: [".mdx", ".md"],
+      gatsbyRemarkPlugins: [{
+        resolve: "gatsby-remark-prismjs",
+        options: {
+          classPrefix: "language-",
+          inlineCodeMarker: {
+            tsx: "tsx",
+            ts: "ts",
+            typescript: "typescript",
+            golang: "go",
+            powershell: "powershell",
+            bash: "bash",
+            js: "js"
+          },
+          aliases: {}
+        }
+      }]
     }
   }]
 };
