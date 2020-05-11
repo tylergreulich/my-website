@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import media from "components/theme"
 import { Link } from "react-scroll"
 import styled from "styled-components"
 
@@ -36,12 +38,40 @@ export const LogoWrapper = styled.div`
   }
 `
 
+export const ThemeToggleWrapper = styled.li`
+  cursor: pointer;
+  padding: 10px;
+
+  ${media().lg`
+    padding: 0;
+    font-size: 1.25rem;
+  `}
+`
+
+export const ThemeToggle = styled(FontAwesomeIcon)`
+  cursor: pointer;
+`
+
 export const NavLinks = styled.ul`
   display: flex;
   align-items: center;
   height: 100%;
   list-style: none;
   color: ${({ theme }) => theme.main.primary};
+
+  li {
+    .active {
+      color: ${({ theme }) => theme.main.text};
+    }
+  }
+`
+
+export const MainNav = styled.div`
+  display: flex;
+
+  ${media().lg`
+    display: none;
+  `}
 `
 
 export const NavLink = styled(Link)`

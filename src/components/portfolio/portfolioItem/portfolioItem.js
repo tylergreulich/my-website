@@ -3,8 +3,10 @@ import {
   PortfolioAdCopy,
   PortfolioImage,
   PortfolioItemButton,
+  PortfolioItemButtonWrapper,
   PortfolioItemWrapper,
   Tech,
+  TechList,
 } from "./portfolioItem.styles"
 
 export const PortfolioItem = ({ last = false }) => {
@@ -26,17 +28,17 @@ export const PortfolioItem = ({ last = false }) => {
         </div>
         <div>
           <Tech>Tech</Tech>
-          <span>React, TypeScript, Laravel, MySQL</span>
+          <TechList>React, TypeScript, Laravel, MySQL</TechList>
         </div>
-        <div>
+        <PortfolioItemButtonWrapper>
           <PortfolioItemButton href="/">Live Site</PortfolioItemButton>
           <PortfolioItemButton
-            href="https://github.com/tylergreulich/kiyoshi-restaurant"
+            href="https://github.com/url/kiyoshi-restaurant"
             target="_blank"
           >
             View Code
           </PortfolioItemButton>
-        </div>
+        </PortfolioItemButtonWrapper>
       </PortfolioAdCopy>
     </PortfolioItemWrapper>
   )

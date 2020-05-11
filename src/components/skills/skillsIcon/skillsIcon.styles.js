@@ -19,5 +19,6 @@ export const LogoContainer = styled.div`
     font-size: 1.5rem;
     font-family: Lato;
     margin: 0;
+    color: ${({ theme }) => theme.main.text};
   }
 `

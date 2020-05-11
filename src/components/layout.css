@@ -2,6 +2,7 @@ html {
   font-family: Merriweather, Lato, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  transition: all 750ms !important;
 }
 body {
   margin: 0;

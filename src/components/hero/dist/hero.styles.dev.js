@@ -5,14 +5,46 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ArrowContainer = exports.BlogButton = exports.PortfolioButton = exports.ButtonWrapper = exports.Profile = exports.ProfileSection = exports.ContentArea = void 0;
 
+var _theme = _interopRequireDefault(require("components/theme"));
+
 var _reactScroll = require("react-scroll");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _templateObject10() {
+  var data = _taggedTemplateLiteral(["\n      height: 2.3rem;\n      width: 2.3rem;\n    "]);
+
+  _templateObject10 = function _templateObject10() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject9() {
+  var data = _taggedTemplateLiteral(["\n      height: 2rem;\n      width: 2rem;\n    "]);
+
+  _templateObject9 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n    transform: translateY(10vh);\n  \n  "]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  /* margin-top: 44%; */\n  cursor: pointer;\n  transform: translateY(17vh);\n\n  .arrow {\n    box-sizing: border-box;\n    height: 2vw;\n    width: 2vw;\n    border-style: solid;\n    border-color: ", ";\n    border-width: 0px 5px 5px 0px;\n    transform: rotate(45deg);\n    transition: border-width 150ms ease-in-out;\n  }\n\n  .arrow:hover {\n    border-bottom-width: 3px;\n    border-right-width: 3px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  /* margin-top: 44%; */\n  cursor: pointer;\n  transform: translateY(15vh);\n\n  ", "\n\n  .arrow {\n    box-sizing: border-box;\n    height: 1.75rem;\n    width: 1.75rem;\n    border-style: solid;\n    border-color: ", ";\n    border-width: 0px 5px 5px 0px;\n    transform: rotate(45deg);\n    transition: border-width 150ms ease-in-out;\n\n    ", "\n\n    ", "\n  }\n\n  .arrow:hover {\n    border-bottom-width: 3px;\n    border-right-width: 3px;\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -102,10 +134,10 @@ var Profile = _styledComponents["default"].div(_templateObject3(), function (_re
   return theme.main.primary;
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.text;
+  return theme.main.text;
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return theme.text;
+  return theme.main.text;
 });
 
 exports.Profile = Profile;
@@ -145,9 +177,9 @@ var BlogButton = (0, _styledComponents["default"])(PortfolioButton)(_templateObj
 });
 exports.BlogButton = BlogButton;
 
-var ArrowContainer = _styledComponents["default"].div(_templateObject7(), function (_ref15) {
+var ArrowContainer = _styledComponents["default"].div(_templateObject7(), (0, _theme["default"])().xl(_templateObject8()), function (_ref15) {
   var theme = _ref15.theme;
   return theme.main.secondary;
-});
+}, (0, _theme["default"])().xl(_templateObject9()), (0, _theme["default"])().md(_templateObject10()));
 
 exports.ArrowContainer = ArrowContainer;

@@ -32,9 +32,14 @@ export const BlogImage = styled.div`
 `
 
 export const BlogContainer = styled.div`
-  padding: 7rem 0 0;
-  width: 55%;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px 40px 40px;
   margin: 0 auto;
+
+  h1 {
+    color: ${({ theme }) => theme.main.primary};
+  }
 
   @media (max-width: 940px) {
     padding: 3rem 0;
@@ -42,9 +47,9 @@ export const BlogContainer = styled.div`
 `
 
 export const BlogTitle = styled.h1`
+  margin: 5rem 0 0 0;
   font-family: Lato;
   font-weight: bold;
-  margin: 0;
   text-align: center;
 
   @media (max-width: 940px) {
@@ -59,7 +64,7 @@ export const BlogTitle = styled.h1`
 export const BlogDate = styled.p`
   font-weight: normal;
   font-size: 1rem;
-  color: #999;
+  color: ${({ theme }) => theme.main.text};
   text-align: center;
   font-size: 1rem;
   margin-bottom: 3.6rem;
@@ -76,6 +81,11 @@ export const BlogDate = styled.p`
 export const BlogContent = styled.div`
   font-family: Merriweather;
   line-height: 1.5;
+  color: ${({ theme }) => theme.main.text};
+
+  strong {
+    font-weight: 800;
+  }
 
   blockquote {
     margin: 3.6rem 0 !important;
@@ -92,6 +102,7 @@ export const BlogContent = styled.div`
     font-weight: lighter;
     font-size: 1.5rem;
     font-family: Lato !important;
+    color: ${({ theme }) => theme.main.primary};
 
     @media (max-width: 720px) {
       font-size: 1.25rem;
@@ -103,9 +114,10 @@ export const BlogContent = styled.div`
   }
 
   h2 {
-    font-size: 2vw;
+    font-size: 1.7vw;
     margin: 3.6rem 0;
     font-family: Lato !important;
+    color: ${({ theme }) => theme.main.primary};
 
     @media (max-width: 720px) {
       font-size: 3vw;
@@ -117,9 +129,9 @@ export const BlogContent = styled.div`
   }
 
   p {
-    font-size: 1.35vw;
+    font-size: 1vw;
     line-height: 1.5;
-    margin-bottom: 3.6rem;
+    margin: 3.6rem 0;
 
     @media (max-width: 800px) {
       font-size: 2.25vw;

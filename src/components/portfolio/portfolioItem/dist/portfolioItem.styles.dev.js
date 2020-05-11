@@ -3,16 +3,178 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PortfolioItemButton = exports.Tech = exports.PortfolioAdCopy = exports.PortfolioImage = exports.PortfolioItemWrapper = void 0;
+exports.PortfolioItemButtonWrapper = exports.PortfolioItemButton = exports.TechList = exports.Tech = exports.PortfolioAdCopy = exports.PortfolioImage = exports.PortfolioItemWrapper = void 0;
 
 var _stockImg = _interopRequireDefault(require("assets/img/stock-img.jpg"));
+
+var _theme = _interopRequireDefault(require("components/theme"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _templateObject21() {
+  var data = _taggedTemplateLiteral(["\n    grid-column-start: 2;\n    grid-column-end: 3;\n  "]);
+
+  _templateObject21 = function _templateObject21() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject20() {
+  var data = _taggedTemplateLiteral(["\n  ", "\n"]);
+
+  _templateObject20 = function _templateObject20() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject19() {
+  var data = _taggedTemplateLiteral(["\n    font-size: 0.5rem;\n  "]);
+
+  _templateObject19 = function _templateObject19() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject18() {
+  var data = _taggedTemplateLiteral(["\n    margin-top: 1rem;\n    font-size: 0.55rem;\n  "]);
+
+  _templateObject18 = function _templateObject18() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject17() {
+  var data = _taggedTemplateLiteral(["\n  border-radius: 3rem;\n  text-align: center;\n  display: inline-block;\n  text-transform: uppercase;\n  font-weight: 700;\n  cursor: pointer;\n  margin-right: 1.5rem;\n  text-decoration: none;\n  transition: all 0.3s ease-in-out;\n  font-family: Lato;\n  padding: 0.4rem 0.8rem;\n  letter-spacing: 0.1rem;\n  font-size: 0.65rem;\n  background-color: transparent;\n  border: 0.25rem solid ", ";\n  color: ", ";\n\n  &:hover {\n    color: ", ";\n    background-color: ", ";\n  }\n\n  ", "\n\n  ", "\n"]);
+
+  _templateObject17 = function _templateObject17() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject16() {
+  var data = _taggedTemplateLiteral(["\n    font-size: 2vw;\n  "]);
+
+  _templateObject16 = function _templateObject16() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject15() {
+  var data = _taggedTemplateLiteral(["\n    font-size: 1.75vw;\n  "]);
+
+  _templateObject15 = function _templateObject15() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject14() {
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n\n  ", "\n\n  ", "\n"]);
+
+  _templateObject14 = function _templateObject14() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject13() {
+  var data = _taggedTemplateLiteral(["\n    font-size: 2.35vw;\n  "]);
+
+  _templateObject13 = function _templateObject13() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject12() {
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  text-transform: uppercase;\n  font-family: Lato;\n  font-weight: 600;\n  font-size: 1rem;\n\n  ", "\n"]);
+
+  _templateObject12 = function _templateObject12() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject11() {
+  var data = _taggedTemplateLiteral(["\n      font-size: 2vw;\n    "]);
+
+  _templateObject11 = function _templateObject11() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject10() {
+  var data = _taggedTemplateLiteral(["\n      font-size: 1.75vw;\n    "]);
+
+  _templateObject10 = function _templateObject10() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject9() {
+  var data = _taggedTemplateLiteral(["\n      margin-bottom: 1rem;\n      font-size: 2.7vw;\n    "]);
+
+  _templateObject9 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n      font-size: 2.4vw;\n    "]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 50%;\n    display: grid;\n    grid-template-columns: 70% 30%;\n    grid-template-rows: repeat(2, 50%);\n    padding: 1.5rem;\n  "]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n  width: 50%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  padding: 0 4%;\n\n  ", "\n\n  h4 {\n    color: ", ";\n    text-transform: uppercase;\n    font-size: 1.3vw;\n\n    @media (max-width: 1400px) {\n      font-size: 1.6vw;\n    }\n\n    @media (max-width: 1300px) {\n      font-size: 1.8vw;\n    }\n\n    ", "\n\n    ", "\n  }\n\n  p {\n    color: ", ";\n    padding-right: 3rem;\n    font-size: 0.85vw;\n\n    @media (max-width: 1400px) {\n      font-size: 1vw;\n    }\n\n    @media (max-width: 1300px) {\n      font-size: 1.3vw;\n    }\n\n    ", "\n\n    ", "\n  }\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  border-radius: 3rem;\n  text-align: center;\n  display: inline-block;\n  text-transform: uppercase;\n  font-weight: 700;\n  cursor: pointer;\n  margin-right: 1.5rem;\n  text-decoration: none;\n  transition: all 0.3s ease-in-out;\n  font-family: Lato;\n  padding: 0.4rem 0.8rem;\n  letter-spacing: 0.1rem;\n  font-size: 0.65rem;\n  background-color: transparent;\n  border: 0.25rem solid ", ";\n  color: ", ";\n\n  &:hover {\n    color: ", ";\n    background-color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: 100%;\n  "]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -22,7 +184,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  text-transform: uppercase;\n  font-family: Lato;\n  font-weight: 600;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 50%;\n\n  background: url(", ") no-repeat center center;\n  background-size: cover;\n\n  ", "\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -32,7 +194,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  width: 50%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  padding: 0 4%;\n\n  h4 {\n    color: ", ";\n    text-transform: uppercase;\n  }\n\n  p {\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n    flex-direction: column;\n  "]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -42,7 +204,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  width: 50%;\n\n  background: url(", ") no-repeat center center;\n  background-size: cover;\n"]);
+  var data = _taggedTemplateLiteral(["\n    height: 600px;\n  "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -52,7 +214,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n  display: flex;\n  background-color: ", ";\n  height: 500px;\n  /* box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1); */\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n  display: flex;\n  background-color: ", ";\n  height: 500px;\n\n  ", "\n\n  ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -69,43 +231,54 @@ var PortfolioItemWrapper = _styledComponents["default"].div(_templateObject(), f
 }, function (_ref2) {
   var theme = _ref2.theme;
   return theme.main.grey;
-});
+}, (0, _theme["default"])().lg(_templateObject2()), (0, _theme["default"])().lg(_templateObject3()));
 
 exports.PortfolioItemWrapper = PortfolioItemWrapper;
 
-var PortfolioImage = _styledComponents["default"].div(_templateObject2(), _stockImg["default"]);
+var PortfolioImage = _styledComponents["default"].div(_templateObject4(), _stockImg["default"], (0, _theme["default"])().lg(_templateObject5()));
 
 exports.PortfolioImage = PortfolioImage;
 
-var PortfolioAdCopy = _styledComponents["default"].div(_templateObject3(), function (_ref3) {
+var PortfolioAdCopy = _styledComponents["default"].div(_templateObject6(), (0, _theme["default"])().lg(_templateObject7()), function (_ref3) {
   var theme = _ref3.theme;
   return theme.main.primary;
-}, function (_ref4) {
+}, (0, _theme["default"])().lg(_templateObject8()), (0, _theme["default"])().md(_templateObject9()), function (_ref4) {
   var theme = _ref4.theme;
   return theme.main.text;
-});
+}, (0, _theme["default"])().lg(_templateObject10()), (0, _theme["default"])().md(_templateObject11()));
 
 exports.PortfolioAdCopy = PortfolioAdCopy;
 
-var Tech = _styledComponents["default"].div(_templateObject4(), function (_ref5) {
+var Tech = _styledComponents["default"].div(_templateObject12(), function (_ref5) {
   var theme = _ref5.theme;
   return theme.main.secondary;
-});
+}, (0, _theme["default"])().lg(_templateObject13()));
 
 exports.Tech = Tech;
 
-var PortfolioItemButton = _styledComponents["default"].a(_templateObject5(), function (_ref6) {
+var TechList = _styledComponents["default"].span(_templateObject14(), function (_ref6) {
   var theme = _ref6.theme;
-  return theme.main.secondary;
-}, function (_ref7) {
+  return theme.main.text;
+}, (0, _theme["default"])().lg(_templateObject15()), (0, _theme["default"])().md(_templateObject16()));
+
+exports.TechList = TechList;
+
+var PortfolioItemButton = _styledComponents["default"].a(_templateObject17(), function (_ref7) {
   var theme = _ref7.theme;
   return theme.main.secondary;
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.main.body;
+  return theme.main.secondary;
 }, function (_ref9) {
   var theme = _ref9.theme;
+  return theme.main.body;
+}, function (_ref10) {
+  var theme = _ref10.theme;
   return theme.main.secondary;
-});
+}, (0, _theme["default"])().lg(_templateObject18()), (0, _theme["default"])().md(_templateObject19()));
 
 exports.PortfolioItemButton = PortfolioItemButton;
+
+var PortfolioItemButtonWrapper = _styledComponents["default"].div(_templateObject20(), (0, _theme["default"])().lg(_templateObject21()));
+
+exports.PortfolioItemButtonWrapper = PortfolioItemButtonWrapper;

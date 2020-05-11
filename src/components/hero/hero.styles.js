@@ -1,3 +1,4 @@
+import media from "components/theme"
 import { Link } from "react-scroll"
 import styled from "styled-components"
 
@@ -45,11 +46,11 @@ export const Profile = styled.div`
     font-size: 2rem;
     font-family: Lato;
     margin: 0 0 3rem;
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.main.text};
   }
 
   p {
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.main.text};
     font-size: 0.9rem;
     line-height: 1.5;
     font-weight: 400;
@@ -111,17 +112,32 @@ export const ArrowContainer = styled.div`
   justify-content: center;
   /* margin-top: 44%; */
   cursor: pointer;
-  transform: translateY(17vh);
+  transform: translateY(15vh);
+
+  ${media().xl`
+    transform: translateY(10vh);
+  
+  `}
 
   .arrow {
     box-sizing: border-box;
-    height: 2vw;
-    width: 2vw;
+    height: 1.75rem;
+    width: 1.75rem;
     border-style: solid;
     border-color: ${({ theme }) => theme.main.secondary};
     border-width: 0px 5px 5px 0px;
     transform: rotate(45deg);
     transition: border-width 150ms ease-in-out;
+
+    ${media().xl`
+      height: 2rem;
+      width: 2rem;
+    `}
+
+    ${media().md`
+      height: 2.3rem;
+      width: 2.3rem;
+    `}
   }
 
   .arrow:hover {

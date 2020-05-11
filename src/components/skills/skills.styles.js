@@ -1,9 +1,11 @@
+import media from "components/theme"
 import styled from "styled-components"
 
 export const SkillsText = styled.h3`
   margin: 5rem 0;
   text-align: center;
   font-size: 2.5rem;
+  color: ${({ theme }) => theme.main.text};
 `
 
 export const SkillsContainer = styled.section`
@@ -11,6 +13,11 @@ export const SkillsContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5rem;
+
+  ${media().lg`
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+  `}
 `
 
 export const FrontendContainer = styled.div`
@@ -27,6 +34,7 @@ export const FrontendText = styled.h4`
   margin-top: 5%;
   text-align: center;
   text-transform: uppercase;
+  color: ${({ theme }) => theme.main.text};
 `
 
 export const BackendText = styled(FrontendText)``

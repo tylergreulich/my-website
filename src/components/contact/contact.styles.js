@@ -6,6 +6,7 @@ export const ContactText = styled.h3`
   margin: 5rem 0;
   font-size: 2.5rem;
   font-family: Lato;
+  color: ${({ theme }) => theme.main.text};
 `
 
 export const FormWrapper = styled.section`
@@ -21,7 +22,6 @@ export const FormWrapper = styled.section`
     margin: 0;
     flex-direction: column;
     justify-content: space-evenly;
-    padding-top: 5.4rem;
   }
 `
 
@@ -31,13 +31,10 @@ export const StyledForm = styled(Form)`
   background-color: ${({ theme }) => theme.main.grey};
   color: ${({ theme }) => theme.body};
   padding: 56px;
+  margin-bottom: 3.5rem;
 
   @media (max-width: 1199.98px) {
-    max-width: 65%;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 70%;
+    max-width: 80%;
   }
 
   @media (max-width: 560px) {
@@ -47,6 +44,10 @@ export const StyledForm = styled(Form)`
   h4 {
     font-size: 1.2rem;
     margin: 2.5rem 0;
+  }
+
+  label {
+    color: ${({ theme }) => theme.main.text};
   }
 
   input[type="text"],
@@ -61,6 +62,7 @@ export const StyledForm = styled(Form)`
     color: inherit;
     line-height: 1.2;
     padding: 0.65rem 0.5rem;
+    color: ${({ theme }) => theme.main.text};
   }
 
   input[type="text"],
@@ -68,14 +70,7 @@ export const StyledForm = styled(Form)`
   textarea {
     &:active,
     &:focus {
-      border: 0.15rem solid ${({ theme }) => theme.main.primary};
-    }
-
-    &:invalid {
-      &:active,
-      &:focus {
-        border: 0.15rem solid transparent;
-      }
+      outline: 0.15rem solid ${({ theme }) => theme.main.primary};
     }
   }
 `
@@ -87,7 +82,7 @@ export const ButtonContainer = styled.div`
   font-family: Lato;
 
   button[type="submit"] {
-    background: ${({ theme }) => theme.main.secondary};
+    background: ${({ theme }) => theme.main.primary};
     border: none;
     width: 100%;
     color: ${({ theme }) => theme.main.body};

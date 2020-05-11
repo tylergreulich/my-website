@@ -1,3 +1,4 @@
+import media from "components/theme"
 import styled from "styled-components"
 
 export const BlogContainer = styled.section`
@@ -6,6 +7,16 @@ export const BlogContainer = styled.section`
   padding: 0 10%;
   grid-template-rows: repeat(1, 600px);
   gap: 5rem;
+
+  ${media().xl`
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  `}
+
+  ${media().md`
+    grid-template-columns: 1fr;
+    height: 2900px;
+  `}
 `
 
 export const BlogText = styled.h3`
@@ -13,6 +24,7 @@ export const BlogText = styled.h3`
   margin: 5rem 0;
   font-size: 2.5rem;
   font-family: Lato;
+  color: ${({ theme }) => theme.main.text};
 `
 
 export const Post = styled.article`
@@ -53,6 +65,7 @@ export const Post = styled.article`
     color: ${props => props.theme.main.text};
     transition: color 0.2s ease-in-out;
     font-family: Lato;
+    color: ${({ theme }) => theme.main.primary};
 
     &:hover {
       color: ${props => props.theme.main.primary};
@@ -101,6 +114,7 @@ export const PaginationComponent = styled.div`
     margin: 0 2rem;
     display: inline-flex;
     align-items: center;
+    color: ${({ theme }) => theme.main.text};
   }
 `
 
@@ -119,17 +133,17 @@ export const PreviousPage = styled.button`
   background-color: transparent;
   border: 0.25rem solid
     ${({ theme, currentPage }) =>
-      currentPage === 1 ? theme.main.darkGrey : theme.main.primary};
+      currentPage === 1 ? theme.main.darkGrey : theme.main.secondary};
 
   &:hover {
     color: ${({ theme, currentPage }) =>
       currentPage === 1 ? theme.main.darkGrey : theme.main.body};
     background-color: ${({ theme, currentPage }) =>
-      currentPage === 1 ? "none" : theme.main.primary};
+      currentPage === 1 ? "none" : theme.main.secondary};
   }
 
   color: ${({ theme, currentPage }) =>
-    currentPage === 1 ? theme.main.darkGrey : theme.main.primary};
+    currentPage === 1 ? theme.main.darkGrey : theme.main.secondary};
 
   &:disabled {
     cursor: not-allowed;

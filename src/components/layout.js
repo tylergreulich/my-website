@@ -1,19 +1,33 @@
 import { Navigation } from "components/navigation/navigation"
-import { theme } from "components/theme"
+import { darkTheme, lightTheme } from "components/theme"
 import React from "react"
-import { ThemeProvider } from "styled-components"
+import { createGlobalStyle, ThemeProvider } from "styled-components"
+import { Footer } from "./footer/footer"
 import "./layout.css"
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${({ theme }) => theme.main.lightGrey};
+  }
+`
+
 const Layout = ({ children }) => {
+  const stored = localStorage.getItem("isDarkMode")
+
+  console.log(stored)
+
+  const [isDarkMode, setIsDarkMode] = React.useState(
+    stored === "true" ? true : false
+  )
+
+  React.useEffect(() => {}, [isDarkMode])
+
   return (
-    <ThemeProvider theme={theme}>
-      <Navigation />
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <GlobalStyle theme={isDarkMode ? darkTheme : lightTheme} />
+      <Navigation setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </ThemeProvider>
   )
 }

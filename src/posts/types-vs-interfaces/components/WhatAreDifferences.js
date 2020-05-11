@@ -7,7 +7,7 @@ const WhatAreDifferences = () => (
     </h2>
     <p>
       Let me preface this with clarifying that we're talking about type aliases,
-      and not a literal type like <strong>any</strong> for example.
+      and not a type literal like <strong>any</strong> for example.
     </p>
     <p>
       You can think of an interface as a virtual structure in which it defines

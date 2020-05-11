@@ -18,17 +18,17 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
 
   const { allMdx } = useStaticQuery(LISTING_QUERY)
 
-  const itemsPerPage = 3
+  const isSmallerDevice = window.innerWidth <= 1312
+
+  const itemsPerPage = isSmallerDevice ? 4 : 3
 
   const indexOfLastItem = currentPage * itemsPerPage
 
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
 
-  const lastPage = Math.ceil(allMdx.edges.length / 3)
+  const lastPage = Math.ceil(allMdx.edges.length / itemsPerPage)
 
   let currentItems = allMdx.edges.slice(indexOfFirstItem, indexOfLastItem)
-
-  console.log(currentItems)
 
   return (
     <Element name="blog">

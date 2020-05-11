@@ -1,7 +1,9 @@
-export const theme = {
+import { css } from "styled-components"
+
+export const lightTheme = {
   main: {
-    primary: "#4361ee",
-    secondary: "#f72585",
+    primary: "#7500ff",
+    secondary: "#d50d68",
     text: "rgba(0, 0, 0, 0.84)",
     body: "#fff",
     lightGrey: "#fafafa",
@@ -10,3 +12,32 @@ export const theme = {
     boxShadow: "0 9px 54px -4px rgba(224, 224, 224, 1)",
   },
 }
+
+export const darkTheme = {
+  main: {
+    body: "#363c48",
+    text: "hsla(0,0%,100%,0.88)",
+    primary: "#d6b3ff",
+    secondary: "#ffa7c4",
+    secondaryLight: "#fbc5d7",
+    grey: "#121212",
+    lightGrey: "#363c48",
+    darkGrey: "#fafafa",
+  },
+}
+
+const sizes = {
+  xl: 82,
+  lg: 62,
+  md: 43,
+}
+
+export default () =>
+  Object.keys(sizes).reduce((acc, label) => {
+    acc[label] = (...args) => css`
+      @media (max-width: ${sizes[label]}em) {
+        ${css(...args)};
+      }
+    `
+    return acc
+  }, {})

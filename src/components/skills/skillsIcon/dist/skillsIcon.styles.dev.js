@@ -10,7 +10,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n\n  svg {\n    font-size: 6rem;\n    color: ", ";\n    margin-bottom: 1rem;\n    height: 50%;\n  }\n\n  p {\n    font-size: 1.5rem;\n    font-family: Lato;\n    margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n\n  svg {\n    font-size: 6rem;\n    color: ", ";\n    margin-bottom: 1rem;\n    height: 50%;\n  }\n\n  p {\n    font-size: 1.5rem;\n    font-family: Lato;\n    margin: 0;\n    color: ", ";\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -25,6 +25,9 @@ var LogoContainer = _styledComponents["default"].div(_templateObject(), function
   var theme = _ref.theme,
       color = _ref.color;
   return color === "primary" ? theme.main.primary : theme.main.secondary;
+}, function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.main.text;
 });
 
 exports.LogoContainer = LogoContainer;

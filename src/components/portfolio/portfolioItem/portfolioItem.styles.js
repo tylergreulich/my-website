@@ -1,4 +1,5 @@
 import StockImg from "assets/img/stock-img.jpg"
+import media from "components/theme"
 import styled from "styled-components"
 
 export const PortfolioItemWrapper = styled.div`
@@ -6,7 +7,14 @@ export const PortfolioItemWrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.main.grey};
   height: 500px;
-  /* box-shadow: 0 9px 54px -4px rgba(224, 224, 224, 1); */
+
+  ${media().lg`
+    height: 600px;
+  `}
+
+  ${media().lg`
+    flex-direction: column;
+  `}
 `
 
 export const PortfolioImage = styled.div`
@@ -14,6 +22,11 @@ export const PortfolioImage = styled.div`
 
   background: url(${StockImg}) no-repeat center center;
   background-size: cover;
+
+  ${media().lg`
+    width: 100%;
+    height: 100%;
+  `}
 `
 
 export const PortfolioAdCopy = styled.div`
@@ -23,13 +36,58 @@ export const PortfolioAdCopy = styled.div`
   justify-content: space-evenly;
   padding: 0 4%;
 
+  ${media().lg`
+    width: 100%;
+    height: 50%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: repeat(2, 50%);
+    padding: 1.5rem;
+  `}
+
   h4 {
     color: ${({ theme }) => theme.main.primary};
     text-transform: uppercase;
+    font-size: 1.3vw;
+
+    @media (max-width: 1400px) {
+      font-size: 1.6vw;
+    }
+
+    @media (max-width: 1300px) {
+      font-size: 1.8vw;
+    }
+
+    ${media().lg`
+      font-size: 2.4vw;
+    `}
+
+    ${media().md`
+      margin-bottom: 1rem;
+      font-size: 2.7vw;
+    `}
   }
 
   p {
     color: ${({ theme }) => theme.main.text};
+    padding-right: 3rem;
+    font-size: 0.85vw;
+
+    @media (max-width: 1400px) {
+      font-size: 1vw;
+    }
+
+    @media (max-width: 1300px) {
+      font-size: 1.3vw;
+    }
+
+    ${media().lg`
+      font-size: 1.75vw;
+    `}
+
+    ${media().md`
+      font-size: 2vw;
+    `}
   }
 `
 
@@ -38,6 +96,23 @@ export const Tech = styled.div`
   text-transform: uppercase;
   font-family: Lato;
   font-weight: 600;
+  font-size: 1rem;
+
+  ${media().lg`
+    font-size: 2.35vw;
+  `}
+`
+
+export const TechList = styled.span`
+  color: ${({ theme }) => theme.main.text};
+
+  ${media().lg`
+    font-size: 1.75vw;
+  `}
+
+  ${media().md`
+    font-size: 2vw;
+  `}
 `
 
 export const PortfolioItemButton = styled.a`
@@ -62,4 +137,20 @@ export const PortfolioItemButton = styled.a`
     color: ${({ theme }) => theme.main.body};
     background-color: ${({ theme }) => theme.main.secondary};
   }
+
+  ${media().lg`
+    margin-top: 1rem;
+    font-size: 0.55rem;
+  `}
+
+  ${media().md`
+    font-size: 0.5rem;
+  `}
+`
+
+export const PortfolioItemButtonWrapper = styled.div`
+  ${media().lg`
+    grid-column-start: 2;
+    grid-column-end: 3;
+  `}
 `
