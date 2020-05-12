@@ -9,14 +9,23 @@ export const IconWrapper = styled.li`
   font-size: 2rem;
   cursor: pointer;
   margin-left: 1.5rem;
+`
 
+export const CloseIconWrapper = styled(IconWrapper)`
+  color: ${({ theme }) => theme.main.body};
+  display: ${({ isMobileNavActive }) => (isMobileNavActive ? "block" : "none")};
+`
+
+export const HamburgerIconWrapper = styled(IconWrapper)`
+  display: none !important;
   ${media().lg`
-    display: block;
+    display: block !important;
   `}
 `
 
 export const HamburgerIcon = styled(FontAwesomeIcon)`
   z-index: 1011;
+  opacity: ${({ isMobileNavActive }) => (isMobileNavActive ? 0 : 1)};
 `
 
 export const CloseIcon = styled(HamburgerIcon)`
@@ -24,6 +33,9 @@ export const CloseIcon = styled(HamburgerIcon)`
   position: absolute;
   color: ${({ theme }) => theme.main.body};
   transition: all 0.3s ease-in-out;
+  top: 15px;
+  right: 80px;
+  opacity: ${({ isMobileNavActive }) => (isMobileNavActive ? 1 : 0)};
 
   &:hover {
     color: ${({ theme }) => theme.main.text};
@@ -36,11 +48,26 @@ export const MobileNavLinkContainer = styled.div`
   ${media().lg`
     display: flex;
   `}
+
+  li {
+    .active {
+      border: 2px solid ${({ theme }) => theme.main.text};
+    }
+  }
 `
 
 export const MobileNavLink = styled(NavLink)`
-  font-size: 1rem;
+  font-size: 0.85rem;
   padding: 0.5rem 0.75rem;
-  margin: 0 0 0 2rem;
+  margin: 0 0 0 1.5rem;
   border: 2px solid ${({ theme }) => theme.main.primary};
+
+  &:hover {
+    color: ${({ theme }) => theme.main.text};
+    border: 2px solid ${({ theme }) => theme.main.text};
+  }
+
+  ${media().md`
+    padding: 0.3rem 0.55rem;
+  `}
 `

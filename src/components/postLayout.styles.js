@@ -1,3 +1,4 @@
+import media from "components/theme"
 import styled from "styled-components"
 
 export const BlogImage = styled.div`
@@ -38,11 +39,16 @@ export const BlogContainer = styled.div`
   margin: 0 auto;
 
   h1 {
+    font-size: 2.7vw;
     color: ${({ theme }) => theme.main.primary};
   }
 
   @media (max-width: 940px) {
     padding: 3rem 0;
+  }
+
+  @media (max-width: 850px) {
+    padding: 3rem 3.25rem;
   }
 `
 
@@ -51,14 +57,6 @@ export const BlogTitle = styled.h1`
   font-family: Lato;
   font-weight: bold;
   text-align: center;
-
-  @media (max-width: 940px) {
-    font-size: 2.5rem;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 2rem;
-  }
 `
 
 export const BlogDate = styled.p`
@@ -114,28 +112,32 @@ export const BlogContent = styled.div`
   }
 
   h2 {
-    font-size: 1.7vw;
     margin: 3.6rem 0;
     font-family: Lato !important;
     color: ${({ theme }) => theme.main.primary};
 
     @media (max-width: 720px) {
-      font-size: 3vw;
+      font-size: 3.5vw;
     }
 
     @media (max-width: 600px) {
-      font-size: 3.5vw;
+      font-size: 3.75vw;
     }
   }
 
   p {
-    font-size: 1vw;
     line-height: 1.5;
     margin: 3.6rem 0;
+    font-size: 1vw;
+    font-family: Lato;
 
-    @media (max-width: 800px) {
-      font-size: 2.25vw;
+    @media (max-width: 1500px) {
+      font-size: 1.5vw;
     }
+
+    ${media().lg`
+      font-size: 2vw;
+    `}
 
     @media (max-width: 720px) {
       font-size: 2.5vw;

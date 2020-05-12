@@ -26,7 +26,7 @@ export const FormWrapper = styled.section`
 `
 
 export const StyledForm = styled(Form)`
-  max-width: 75%;
+  width: 75%;
   height: 100%;
   background-color: ${({ theme }) => theme.main.grey};
   color: ${({ theme }) => theme.body};
@@ -56,10 +56,10 @@ export const StyledForm = styled(Form)`
     width: 100%;
     font-size: 0.8rem;
     background: ${({ theme }) => theme.main.body};
-    border: 0.15rem solid transparent;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     margin-top: 0.5rem;
     color: inherit;
+    border: ${({ theme }) => `0.15rem solid ${theme.main.darkGrey}`};
     line-height: 1.2;
     padding: 0.65rem 0.5rem;
     color: ${({ theme }) => theme.main.text};
@@ -68,10 +68,23 @@ export const StyledForm = styled(Form)`
   input[type="text"],
   input[type="email"],
   textarea {
-    &:active,
-    &:focus {
-      outline: 0.15rem solid ${({ theme }) => theme.main.primary};
+    &:active:not(:invalid),
+    &:focus:not(:invalid) {
+      border: 0.15rem solid ${({ theme }) => theme.main.primary};
     }
+
+    &:invalid {
+      box-shadow: none;
+    }
+  }
+
+  strong {
+    font-family: Lato;
+    color: ${({ theme }) => theme.main.errorText};
+  }
+
+  div {
+    margin-bottom: 2rem;
   }
 `
 
@@ -94,15 +107,16 @@ export const ButtonContainer = styled.div`
     transition: all 0.25s ease-in-out;
     cursor: pointer;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background: ${({ theme }) => theme.main.text};
     }
   }
 
   button:disabled,
   button[disabled] {
-    background-color: ${({ theme }) => theme.main.darkGrey};
-    color: black;
+    color: ${({ theme }) => theme.main.body};
     font-weight: 600;
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 `

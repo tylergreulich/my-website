@@ -38,7 +38,6 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
           const { path, title, date, featuredImg } = node.frontmatter
 
           if (featuredImg && featuredImg.childImageSharp) {
-            console.log(title)
             return (
               <Post key={index}>
                 <Link to={`/posts${path}`} id="image">
@@ -76,7 +75,6 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
         <li>{currentPage}</li>
         <NextPage
           onClick={() => {
-            console.log(currentPage)
             if (currentPage < lastPage) {
               setCurrentPage(currentPage + 1)
             }

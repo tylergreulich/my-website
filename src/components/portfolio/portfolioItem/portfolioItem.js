@@ -6,6 +6,7 @@ import {
   PortfolioItemButtonWrapper,
   PortfolioItemWrapper,
   Tech,
+  TechContainer,
   TechList,
 } from "./portfolioItem.styles"
 
@@ -14,7 +15,7 @@ export const PortfolioItem = ({ last = false }) => {
     <PortfolioItemWrapper last={last}>
       <PortfolioImage />
       <PortfolioAdCopy>
-        <div>
+        <div id="projectInfo">
           <h4>Kiyoshi's Teriyaki and Sushi</h4>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sem
@@ -26,15 +27,18 @@ export const PortfolioItem = ({ last = false }) => {
             sollicitudin ex.
           </p>
         </div>
-        <div>
+        <TechContainer>
           <Tech>Tech</Tech>
           <TechList>React, TypeScript, Laravel, MySQL</TechList>
-        </div>
+        </TechContainer>
         <PortfolioItemButtonWrapper>
           <PortfolioItemButton href="/">Live Site</PortfolioItemButton>
           <PortfolioItemButton
             href="https://github.com/url/kiyoshi-restaurant"
             target="_blank"
+            style={{
+              marginTop: "1rem",
+            }}
           >
             View Code
           </PortfolioItemButton>

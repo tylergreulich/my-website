@@ -1,5 +1,5 @@
 import Axios from "axios"
-import { Field, Formik, useField } from "formik"
+import { Formik } from "formik"
 import React from "react"
 import { Element } from "react-scroll"
 import * as yup from "yup"
@@ -10,26 +10,35 @@ import {
   StyledForm,
 } from "./contact.styles"
 
-const validationSchema = yup.object().shape({
-  email: yup.string().email("Email must be a valid email"),
+const validationSchema = yup.object({
+  name: yup.string().required("Name field is required"),
+  email: yup
+    .string()
+    .email("Email must be a valid email")
+    .required("Email field is required"),
+  subject: yup.string().required("Subject field is required"),
+  message: yup.string().required("Message field is required"),
 })
 
-const MyTextField = ({ placeholder, type, ...props }) => {
-  const [field, meta] = useField(props)
-  let errorText =
-    meta && meta.error && meta.error.length && meta.touched ? meta.error : ""
-
-  return (
-    <Field
-      placeholder={placeholder}
-      {...field}
-      helpertext={errorText}
-      error={errorText}
-      required={true}
-      type={type}
-    />
-  )
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
+  <div>
+    <label for={name}>{capitalizeFirstLetter(name)}</label>
+    <input type="hidden" name="bot-field" />
+    <input
+      name={name}
+      value={value}
+      type={type}
+      id={name}
+      onChange={handleChange}
+      required
+    />
+    <strong>{touched[name] && errors[name] ? errors[name] : ""}</strong>
+  </div>
+)
 
 export const Contact = ({ location }) => {
   const [status, setStatus] = React.useState("")
@@ -71,50 +80,79 @@ export const Contact = ({ location }) => {
           data-netlify="true"
           method="post"
         >
-          {({ values, isSubmitting, handleChange, handleBlur, errors }) => {
+          {({
+            values,
+            isSubmitting,
+            errors,
+            handleChange,
+            touched,
+            setFieldTouched,
+          }) => {
+            const isEmpty =
+              values.name.length === 0 ||
+              values.email.length === 0 ||
+              values.message.length === 0 ||
+              values.subject.length === 0 ||
+              errors.email ||
+              errors.message ||
+              errors.subject ||
+              errors.name
+
             return (
               <StyledForm>
-                <label for="name">Name</label>
-                <input type="hidden" name="bot-field" />
-                <MyTextField
+                <MyInput
                   name="name"
+                  type="text"
+                  errors={errors}
+                  touched={touched}
                   value={values.name}
-                  placeholder={errors.name ? errors.name : ""}
-                  type="text"
-                  id="name"
+                  handleChange={e => {
+                    setFieldTouched("name", true)
+                    handleChange(e)
+                  }}
                 />
-                <label for="email">
-                  {errors.email ? errors.email : "Email"}
-                </label>
-                <MyTextField
+                <MyInput
                   name="email"
-                  value={values.email}
-                  placeholder={errors.email ? errors.email : ""}
                   type="email"
-                  id="email"
+                  errors={errors}
+                  touched={touched}
+                  value={values.email}
+                  handleChange={e => {
+                    setFieldTouched("email", true)
+                    handleChange(e)
+                  }}
                 />
-                <label for="subject">Subject</label>
-                <MyTextField
+                <MyInput
                   name="subject"
-                  value={values.subject}
-                  placeholder={errors.subject ? errors.subject : ""}
                   type="text"
-                  id="subject"
+                  errors={errors}
+                  touched={touched}
+                  value={values.subject}
+                  handleChange={e => {
+                    setFieldTouched("subject", true)
+                    handleChange(e)
+                  }}
                 />
-                <label for="message">Message</label>
-                <Field
-                  component="textarea"
-                  placeholder={errors.message ? errors.message : ""}
-                  value={values.message}
-                  name="message"
-                  rows={4}
-                  required
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  id="message"
-                />
+                <div>
+                  <label for="message">Message</label>
+                  <textarea
+                    type="textarea"
+                    value={values.message}
+                    name="message"
+                    rows={4}
+                    required
+                    onChange={e => {
+                      setFieldTouched("message", true)
+                      handleChange(e)
+                    }}
+                    id="message"
+                  />
+                  <strong>
+                    {touched.message && errors.message ? errors.message : null}
+                  </strong>
+                </div>
                 <ButtonContainer>
-                  <button type="submit" disabled={isSubmitting}>
+                  <button type="submit" disabled={isSubmitting || isEmpty}>
                     {status?.length
                       ? status
                       : isSubmitting

@@ -4,6 +4,7 @@ import { MyLogo } from "assets/svg/myLogo"
 import { Link } from "gatsby"
 import React from "react"
 import { animateScroll as scroll } from "react-scroll"
+import styled from "styled-components"
 import { MobileNavigation } from "./mobileNavigation/mobileNavigation"
 import {
   Header,
@@ -15,8 +16,24 @@ import {
   ThemeToggleWrapper,
 } from "./navigation.styles"
 
+const HomeLink = styled(Link)`
+  font-weight: 500;
+  margin: 0 0 0 1rem;
+  padding: 1rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  color: ${({ theme }) => theme.main.primary};
+
+  &:hover {
+    color: ${({ theme }) => theme.main.text};
+  }
+`
+
 export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
   const location = useLocation()
+
+  const [isMobileNavActive, setIsMobileNavActive] = React.useState(false)
 
   const isBlogPost = location.pathname.includes("post")
 
@@ -40,13 +57,19 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true })
 
+    console.log(isMobileNavActive)
+
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
+  const handleIsMobileActive = () => {
+    setIsMobileNavActive(!isMobileNavActive)
+  }
+
   return (
-    <Header newBgColor={newBgColor}>
+    <Header newBgColor={newBgColor} isMobileNavActive={isMobileNavActive}>
       <LogoWrapper onClick={() => handleClick()}>
         <MyLogo />
       </LogoWrapper>
@@ -72,11 +95,15 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
         )}
         {isBlogPost ? (
           <li>
-            <Link to="/">Home</Link>
+            <HomeLink to="/">Home</HomeLink>
           </li>
         ) : (
           <>
-            <MobileNavigation />
+            <MobileNavigation
+              handleClick={handleIsMobileActive}
+              isMobileNavActive={isMobileNavActive}
+              handleIsMobileActive={handleIsMobileActive}
+            />
             <MainNav>
               <li>
                 <NavLink

@@ -1,8 +1,6 @@
-import { Link } from "gatsby"
 import React from "react"
 import { Link as ScrollLink } from "react-scroll"
 import {
-  ArrowContainer,
   BlogButton,
   ButtonWrapper,
   ContentArea,
@@ -17,16 +15,16 @@ const Hero = () => {
       <ProfileSection>
         <Profile>
           <h1>
-            Fname
-            <br /> <span>Lname</span>
+            Tyler
+            <br /> <span>Greulich</span>
           </h1>
           <h5>Web Developer</h5>
           <p>
-            My name is Fname Lname and I'm a Full-Stack Web Developer that
+            My name is Tyler Greulich and I'm a Full-Stack Web Developer that
             enjoys creating applications with a focus on UI / UX while writing
             robust, elegant code. I'm also language agnostic and can pick up and
             learn anything you throw at me. Contact me
-            <Link to="/contact"> here.</Link>
+            <ScrollLink to="/contact"> here.</ScrollLink>
           </p>
           <ButtonWrapper>
             <PortfolioButton
@@ -43,17 +41,6 @@ const Hero = () => {
           </ButtonWrapper>
         </Profile>
       </ProfileSection>
-      <ArrowContainer>
-        <ScrollLink
-          to="portfolio"
-          spy={true}
-          smooth={true}
-          duration={500}
-          offset={-75}
-        >
-          <div class="arrow"></div>
-        </ScrollLink>
-      </ArrowContainer>
     </ContentArea>
   )
 }

@@ -19,12 +19,13 @@ export const BackdropColor = styled.div`
     `translateX(${isMobileNavActive ? "0" : "100%"})`};
 
   li {
+    color: ${({ theme }) => theme.main.body};
     a {
-      color: ${({ theme }) => theme.main.body};
       font-size: 2.5rem;
+      z-index: 10000;
 
       &:hover {
-        color: ${({ theme }) => theme.main.text};
+        color: ${({ theme }) => theme.main.text} !important;
       }
     }
   }

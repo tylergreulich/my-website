@@ -10,7 +10,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 100;\n  opacity: ", ";\n  transition: all 0.3s ease-in-out;\n  display: ", ";\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  transform: ", ";\n\n  li {\n    a {\n      color: ", ";\n      font-size: 2.5rem;\n\n      &:hover {\n        color: ", ";\n      }\n    }\n  }\n  /* transform: translateY(0); */\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  z-index: 100;\n  opacity: ", ";\n  transition: all 0.3s ease-in-out;\n  display: ", ";\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  transform: ", ";\n\n  li {\n    color: ", ";\n    a {\n      font-size: 2.5rem;\n      z-index: 10000;\n\n      &:hover {\n        color: ", " !important;\n      }\n    }\n  }\n  /* transform: translateY(0); */\n"]);
 
   _templateObject = function _templateObject() {
     return data;

@@ -10,6 +10,8 @@ export const lightTheme = {
     grey: "#f5f5f5",
     darkGrey: "#acacac",
     boxShadow: "0 9px 54px -4px rgba(224, 224, 224, 1)",
+    greyAlt: "#eee",
+    errorText: "#cc0000",
   },
 }
 
@@ -20,9 +22,11 @@ export const darkTheme = {
     primary: "#d6b3ff",
     secondary: "#ffa7c4",
     secondaryLight: "#fbc5d7",
-    grey: "#121212",
+    grey: "#2f2f2f",
     lightGrey: "#363c48",
     darkGrey: "#fafafa",
+    greyAlt: "#3a3c3c",
+    errorText: "#ff7790",
   },
 }
 

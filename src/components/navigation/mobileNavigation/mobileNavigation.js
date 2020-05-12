@@ -3,15 +3,18 @@ import React from "react"
 import { Backdrop } from "./backdrop/backdrop"
 import {
   CloseIcon,
+  CloseIconWrapper,
   HamburgerIcon,
-  IconWrapper,
+  HamburgerIconWrapper,
   MobileNavLink,
   MobileNavLinkContainer,
 } from "./mobileNavigation.styles"
 
-export const MobileNavigation = () => {
-  const [isMobileNavActive, setIsMobileNavActive] = React.useState(false)
-
+export const MobileNavigation = ({
+  handleClick,
+  isMobileNavActive,
+  handleIsMobileActive,
+}) => {
   return (
     <>
       <MobileNavLinkContainer>
@@ -20,7 +23,7 @@ export const MobileNavigation = () => {
             to="portfolio"
             smooth={true}
             duration={750}
-            offset={-75}
+            offset={-125}
             spy={true}
           >
             Portfolio
@@ -31,31 +34,31 @@ export const MobileNavigation = () => {
             to="contact"
             smooth={true}
             duration={750}
-            offset={-75}
+            offset={-125}
             spy={true}
           >
             Contact
           </MobileNavLink>
         </li>
       </MobileNavLinkContainer>
-      {isMobileNavActive ? (
-        <IconWrapper>
-          <CloseIcon
-            icon={faTimes}
-            isMobileNavActive={isMobileNavActive}
-            onClick={() => setIsMobileNavActive(false)}
-          />
-        </IconWrapper>
-      ) : (
-        <IconWrapper>
-          <HamburgerIcon
-            icon={faBars}
-            isMobileNavActive={isMobileNavActive}
-            onClick={() => setIsMobileNavActive(true)}
-          />
-        </IconWrapper>
-      )}
-      <Backdrop isMobileNavActive={isMobileNavActive} />
+      <CloseIconWrapper isMobileNavActive={isMobileNavActive}>
+        <CloseIcon
+          icon={faTimes}
+          isMobileNavActive={isMobileNavActive}
+          onClick={handleClick}
+        />
+      </CloseIconWrapper>
+      <HamburgerIconWrapper isMobileNavActive={isMobileNavActive}>
+        <HamburgerIcon
+          icon={faBars}
+          isMobileNavActive={isMobileNavActive}
+          onClick={handleClick}
+        />
+      </HamburgerIconWrapper>
+      <Backdrop
+        isMobileNavActive={isMobileNavActive}
+        handleIsMobileActive={handleIsMobileActive}
+      />
     </>
   )
 }

@@ -28,7 +28,9 @@ var lightTheme = {
     lightGrey: "#fafafa",
     grey: "#f5f5f5",
     darkGrey: "#acacac",
-    boxShadow: "0 9px 54px -4px rgba(224, 224, 224, 1)"
+    boxShadow: "0 9px 54px -4px rgba(224, 224, 224, 1)",
+    greyAlt: "#eee",
+    errorText: "#cc0000"
   }
 };
 exports.lightTheme = lightTheme;
@@ -39,9 +41,11 @@ var darkTheme = {
     primary: "#d6b3ff",
     secondary: "#ffa7c4",
     secondaryLight: "#fbc5d7",
-    grey: "#121212",
+    grey: "#2f2f2f",
     lightGrey: "#363c48",
-    darkGrey: "#fafafa"
+    darkGrey: "#fafafa",
+    greyAlt: "#3a3c3c",
+    errorText: "#ff7790"
   }
 };
 exports.darkTheme = darkTheme;

@@ -15,7 +15,8 @@ export const Header = styled.header`
   justify-content: space-between;
   font-family: Lato;
   max-width: 100%;
-  opacity: ${({ newBgColor }) => (newBgColor ? "0.9" : 1)};
+  opacity: ${({ newBgColor, isMobileNavActive }) =>
+    newBgColor && !isMobileNavActive ? "0.9" : 1};
   z-index: 100;
 `
 
@@ -24,6 +25,10 @@ export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  svg {
+    height: 65%;
+  }
 
   &:hover {
     svg {

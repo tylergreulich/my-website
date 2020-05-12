@@ -34,15 +34,21 @@ export const PortfolioAdCopy = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 0 4%;
+  padding: 2.5rem;
 
   ${media().lg`
+    padding: 0;
     width: 100%;
     height: 50%;
     display: grid;
     grid-template-columns: 70% 30%;
     grid-template-rows: repeat(2, 50%);
-    padding: 1.5rem;
+
+    #projectInfo {
+      padding: 1.5rem;
+      grid-row-end: 3;
+      grid-row-start: 1;
+    }
   `}
 
   h4 {
@@ -70,7 +76,6 @@ export const PortfolioAdCopy = styled.div`
 
   p {
     color: ${({ theme }) => theme.main.text};
-    padding-right: 3rem;
     font-size: 0.85vw;
 
     @media (max-width: 1400px) {
@@ -91,6 +96,13 @@ export const PortfolioAdCopy = styled.div`
   }
 `
 
+export const TechContainer = styled.div`
+  ${media().lg`
+    background-color: ${({ theme }) => theme.main.greyAlt};
+    padding: 1.5rem;
+  `}
+`
+
 export const Tech = styled.div`
   color: ${({ theme }) => theme.main.secondary};
   text-transform: uppercase;
@@ -99,6 +111,7 @@ export const Tech = styled.div`
   font-size: 1rem;
 
   ${media().lg`
+    background-color: ${({ theme }) => theme.main.greyAlt};
     font-size: 2.35vw;
   `}
 `
@@ -129,7 +142,6 @@ export const PortfolioItemButton = styled.a`
   padding: 0.4rem 0.8rem;
   letter-spacing: 0.1rem;
   font-size: 0.65rem;
-  background-color: transparent;
   border: 0.25rem solid ${({ theme }) => theme.main.secondary};
   color: ${({ theme }) => theme.main.secondary};
 
@@ -139,17 +151,20 @@ export const PortfolioItemButton = styled.a`
   }
 
   ${media().lg`
-    margin-top: 1rem;
-    font-size: 0.55rem;
+    background-color: ${({ theme }) => theme.main.greyAlt};
+    font-size: 0.5rem;
   `}
 
   ${media().md`
-    font-size: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.4rem;
   `}
 `
 
 export const PortfolioItemButtonWrapper = styled.div`
   ${media().lg`
+    padding: 1.5rem;
+    background-color: ${({ theme }) => theme.main.greyAlt};
     grid-column-start: 2;
     grid-column-end: 3;
   `}

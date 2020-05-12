@@ -12,7 +12,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  width: 100%;\n  font-family: Lato;\n\n  button[type=\"submit\"] {\n    background: ", ";\n    border: none;\n    width: 100%;\n    color: ", ";\n    font-size: 1rem;\n    /* border-radius: 3rem; */\n    text-transform: uppercase;\n    text-align: center;\n    padding: 1.15rem 0;\n    transition: all 0.25s ease-in-out;\n    cursor: pointer;\n\n    &:hover {\n      background: ", ";\n    }\n  }\n\n  button:disabled,\n  button[disabled] {\n    background-color: ", ";\n    color: black;\n    font-weight: 600;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  width: 100%;\n  font-family: Lato;\n\n  button[type=\"submit\"] {\n    background: ", ";\n    border: none;\n    width: 100%;\n    color: ", ";\n    font-size: 1rem;\n    /* border-radius: 3rem; */\n    text-transform: uppercase;\n    text-align: center;\n    padding: 1.15rem 0;\n    transition: all 0.25s ease-in-out;\n    cursor: pointer;\n\n    &:hover:not(:disabled) {\n      background: ", ";\n    }\n  }\n\n  button:disabled,\n  button[disabled] {\n    color: ", ";\n    font-weight: 600;\n    opacity: 0.6;\n    cursor: not-allowed;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -22,7 +22,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 75%;\n  height: 100%;\n  background-color: ", ";\n  color: ", ";\n  padding: 56px;\n  margin-bottom: 3.5rem;\n\n  @media (max-width: 1199.98px) {\n    max-width: 80%;\n  }\n\n  @media (max-width: 560px) {\n    max-width: 90%;\n  }\n\n  h4 {\n    font-size: 1.2rem;\n    margin: 2.5rem 0;\n  }\n\n  label {\n    color: ", ";\n  }\n\n  input[type=\"text\"],\n  input[type=\"email\"],\n  textarea {\n    width: 100%;\n    font-size: 0.8rem;\n    background: ", ";\n    border: 0.15rem solid transparent;\n    margin-bottom: 2rem;\n    margin-top: 0.5rem;\n    color: inherit;\n    line-height: 1.2;\n    padding: 0.65rem 0.5rem;\n    color: ", ";\n  }\n\n  input[type=\"text\"],\n  input[type=\"email\"],\n  textarea {\n    &:active,\n    &:focus {\n      outline: 0.15rem solid ", ";\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 75%;\n  height: 100%;\n  background-color: ", ";\n  color: ", ";\n  padding: 56px;\n  margin-bottom: 3.5rem;\n\n  @media (max-width: 1199.98px) {\n    max-width: 80%;\n  }\n\n  @media (max-width: 560px) {\n    max-width: 90%;\n  }\n\n  h4 {\n    font-size: 1.2rem;\n    margin: 2.5rem 0;\n  }\n\n  label {\n    color: ", ";\n  }\n\n  input[type=\"text\"],\n  input[type=\"email\"],\n  textarea {\n    width: 100%;\n    font-size: 0.8rem;\n    background: ", ";\n    margin-bottom: 0.5rem;\n    margin-top: 0.5rem;\n    color: inherit;\n    border: ", ";\n    line-height: 1.2;\n    padding: 0.65rem 0.5rem;\n    color: ", ";\n  }\n\n  input[type=\"text\"],\n  input[type=\"email\"],\n  textarea {\n    &:active:not(:invalid),\n    &:focus:not(:invalid) {\n      border: 0.15rem solid ", ";\n    }\n\n    &:invalid {\n      box-shadow: none;\n    }\n  }\n\n  strong {\n    font-family: Lato;\n    color: ", ";\n  }\n\n  div {\n    margin-bottom: 2rem;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -77,25 +77,31 @@ var StyledForm = (0, _styledComponents["default"])(_formik.Form)(_templateObject
   return theme.main.body;
 }, function (_ref6) {
   var theme = _ref6.theme;
-  return theme.main.text;
+  return "0.15rem solid ".concat(theme.main.darkGrey);
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.main.primary;
-});
-exports.StyledForm = StyledForm;
-
-var ButtonContainer = _styledComponents["default"].div(_templateObject4(), function (_ref8) {
+  return theme.main.text;
+}, function (_ref8) {
   var theme = _ref8.theme;
   return theme.main.primary;
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.main.body;
-}, function (_ref10) {
+  return theme.main.errorText;
+});
+exports.StyledForm = StyledForm;
+
+var ButtonContainer = _styledComponents["default"].div(_templateObject4(), function (_ref10) {
   var theme = _ref10.theme;
-  return theme.main.text;
+  return theme.main.primary;
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.main.darkGrey;
+  return theme.main.body;
+}, function (_ref12) {
+  var theme = _ref12.theme;
+  return theme.main.text;
+}, function (_ref13) {
+  var theme = _ref13.theme;
+  return theme.main.body;
 });
 
 exports.ButtonContainer = ButtonContainer;

@@ -6,6 +6,10 @@ export const SkillsText = styled.h3`
   text-align: center;
   font-size: 2.5rem;
   color: ${({ theme }) => theme.main.text};
+
+  ${media().lg`
+    font-size: 2rem;
+  `}
 `
 
 export const SkillsContainer = styled.section`

@@ -60,6 +60,10 @@ export const Profile = styled.div`
     @media (max-width: 760px) {
       font-size: 1rem;
     }
+
+    a {
+      color: ${({ theme }) => theme.main.primary};
+    }
   }
 `
 

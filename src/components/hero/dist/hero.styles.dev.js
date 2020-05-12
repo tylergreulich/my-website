@@ -84,7 +84,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n\n  h1 {\n    font-size: 3.8rem;\n    font-weight: 500;\n    line-height: 1.2;\n    font-family: Lato;\n    margin: 0 0 1rem;\n    color: ", ";\n\n    span {\n      color: ", ";\n      font-family: Lato;\n    }\n  }\n\n  h5 {\n    font-size: 2rem;\n    font-family: Lato;\n    margin: 0 0 3rem;\n    color: ", ";\n  }\n\n  p {\n    color: ", ";\n    font-size: 0.9rem;\n    line-height: 1.5;\n    font-weight: 400;\n    margin: 0 0 3rem;\n    font-family: Merriweather;\n\n    @media (max-width: 760px) {\n      font-size: 1rem;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n\n  h1 {\n    font-size: 3.8rem;\n    font-weight: 500;\n    line-height: 1.2;\n    font-family: Lato;\n    margin: 0 0 1rem;\n    color: ", ";\n\n    span {\n      color: ", ";\n      font-family: Lato;\n    }\n  }\n\n  h5 {\n    font-size: 2rem;\n    font-family: Lato;\n    margin: 0 0 3rem;\n    color: ", ";\n  }\n\n  p {\n    color: ", ";\n    font-size: 0.9rem;\n    line-height: 1.5;\n    font-weight: 400;\n    margin: 0 0 3rem;\n    font-family: Merriweather;\n\n    @media (max-width: 760px) {\n      font-size: 1rem;\n    }\n\n    a {\n      color: ", ";\n    }\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -138,6 +138,9 @@ var Profile = _styledComponents["default"].div(_templateObject3(), function (_re
 }, function (_ref5) {
   var theme = _ref5.theme;
   return theme.main.text;
+}, function (_ref6) {
+  var theme = _ref6.theme;
+  return theme.main.primary;
 });
 
 exports.Profile = Profile;
@@ -145,40 +148,40 @@ exports.Profile = Profile;
 var ButtonWrapper = _styledComponents["default"].div(_templateObject4());
 
 exports.ButtonWrapper = ButtonWrapper;
-var PortfolioButton = (0, _styledComponents["default"])(_reactScroll.Link)(_templateObject5(), function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.main.primary;
-}, function (_ref7) {
+var PortfolioButton = (0, _styledComponents["default"])(_reactScroll.Link)(_templateObject5(), function (_ref7) {
   var theme = _ref7.theme;
-  return theme.main.body;
+  return theme.main.primary;
 }, function (_ref8) {
   var theme = _ref8.theme;
+  return theme.main.body;
+}, function (_ref9) {
+  var theme = _ref9.theme;
   return theme.main.text;
 });
 exports.PortfolioButton = PortfolioButton;
-var BlogButton = (0, _styledComponents["default"])(PortfolioButton)(_templateObject6(), function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.main.primary;
-}, function (_ref10) {
+var BlogButton = (0, _styledComponents["default"])(PortfolioButton)(_templateObject6(), function (_ref10) {
   var theme = _ref10.theme;
-  return theme.main.body;
+  return theme.main.primary;
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.main.primary;
+  return theme.main.body;
 }, function (_ref12) {
   var theme = _ref12.theme;
-  return theme.main.text;
+  return theme.main.primary;
 }, function (_ref13) {
   var theme = _ref13.theme;
   return theme.main.text;
 }, function (_ref14) {
   var theme = _ref14.theme;
+  return theme.main.text;
+}, function (_ref15) {
+  var theme = _ref15.theme;
   return theme.main.body;
 });
 exports.BlogButton = BlogButton;
 
-var ArrowContainer = _styledComponents["default"].div(_templateObject7(), (0, _theme["default"])().xl(_templateObject8()), function (_ref15) {
-  var theme = _ref15.theme;
+var ArrowContainer = _styledComponents["default"].div(_templateObject7(), (0, _theme["default"])().xl(_templateObject8()), function (_ref16) {
+  var theme = _ref16.theme;
   return theme.main.secondary;
 }, (0, _theme["default"])().xl(_templateObject9()), (0, _theme["default"])().md(_templateObject10()));
 

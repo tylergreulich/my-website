@@ -86,7 +86,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n\n  &:hover {\n    svg {\n      rect {\n        stroke: ", ";\n      }\n\n      text {\n        fill: ", ";\n      }\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n\n  svg {\n    height: 65%;\n  }\n\n  &:hover {\n    svg {\n      rect {\n        stroke: ", ";\n      }\n\n      text {\n        fill: ", ";\n      }\n    }\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -112,8 +112,9 @@ var Header = _styledComponents["default"].header(_templateObject(), function (_r
       theme = _ref.theme;
   return newBgColor ? theme.main.body : "transparent";
 }, function (_ref2) {
-  var newBgColor = _ref2.newBgColor;
-  return newBgColor ? "0.9" : 1;
+  var newBgColor = _ref2.newBgColor,
+      isMobileNavActive = _ref2.isMobileNavActive;
+  return newBgColor && !isMobileNavActive ? "0.9" : 1;
 });
 
 exports.Header = Header;

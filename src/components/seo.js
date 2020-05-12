@@ -27,13 +27,12 @@ function SEO({ description = "", lang = "en", meta = [], title }) {
   const metaDescription = description || site.siteMetadata.description
 
   return (
-    // @ts-ignore
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`Web Dev`}
+      titleTemplate={`Tyler Greulich | Web Developer`}
       meta={[
         {
           name: `description`,
