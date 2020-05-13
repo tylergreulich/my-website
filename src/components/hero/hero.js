@@ -1,5 +1,4 @@
 import React from "react"
-import { Link as ScrollLink } from "react-scroll"
 import {
   BlogButton,
   ButtonWrapper,
@@ -22,9 +21,9 @@ const Hero = () => {
           <p>
             My name is Tyler Greulich and I'm a Full-Stack Web Developer that
             enjoys creating applications with a focus on UI / UX while writing
-            robust, elegant code. I'm also language agnostic and can pick up and
-            learn anything you throw at me. Contact me
-            <ScrollLink to="/contact"> here.</ScrollLink>
+            clean, elegant, maintainable code. Currently I'm looking to get
+            hired at a company that'll constantly challenge me to get outside of
+            my comfort zone and learn new technologies.
           </p>
           <ButtonWrapper>
             <PortfolioButton

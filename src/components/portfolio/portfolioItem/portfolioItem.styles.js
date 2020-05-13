@@ -1,4 +1,3 @@
-import StockImg from "assets/img/stock-img.jpg"
 import media from "components/theme"
 import styled from "styled-components"
 
@@ -7,9 +6,11 @@ export const PortfolioItemWrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.main.grey};
   height: 500px;
+  padding: 2rem;
 
   ${media().lg`
     height: 600px;
+    padding: 0;
   `}
 
   ${media().lg`
@@ -20,7 +21,7 @@ export const PortfolioItemWrapper = styled.div`
 export const PortfolioImage = styled.div`
   width: 50%;
 
-  background: url(${StockImg}) no-repeat center center;
+  background: ${({ imgUrl }) => `url(${imgUrl}) no-repeat center center`};
   background-size: cover;
 
   ${media().lg`
@@ -124,7 +125,7 @@ export const TechList = styled.span`
   `}
 
   ${media().md`
-    font-size: 2vw;
+    font-size: 1.5vw;
   `}
 `
 

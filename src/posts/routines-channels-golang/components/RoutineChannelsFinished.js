@@ -10,7 +10,11 @@ const RoutineChannelsFinished = () => (
     </p>
     <p>
       If you want to read more about routines and channels you can do so{" "}
-      <a href="https://tour.golang.org/concurrency/1" target="_blank">
+      <a
+        href="https://tour.golang.org/concurrency/1"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         here
       </a>
     </p>

@@ -27,6 +27,8 @@ export const darkTheme = {
     darkGrey: "#fafafa",
     greyAlt: "#3a3c3c",
     errorText: "#ff7790",
+    inputBgColor: "rgb(232, 240, 254)",
+    inputColor: "rgba(0, 0, 0, 0.84)",
   },
 }
 

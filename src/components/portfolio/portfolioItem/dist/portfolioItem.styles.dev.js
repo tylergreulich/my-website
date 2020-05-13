@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PortfolioItemButtonWrapper = exports.PortfolioItemButton = exports.TechList = exports.Tech = exports.TechContainer = exports.PortfolioAdCopy = exports.PortfolioImage = exports.PortfolioItemWrapper = void 0;
 
-var _stockImg = _interopRequireDefault(require("assets/img/stock-img.jpg"));
-
 var _theme = _interopRequireDefault(require("components/theme"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
@@ -64,7 +62,7 @@ function _templateObject19() {
 }
 
 function _templateObject18() {
-  var data = _taggedTemplateLiteral(["\n    font-size: 2vw;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    font-size: 1.5vw;\n  "]);
 
   _templateObject18 = function _templateObject18() {
     return data;
@@ -204,7 +202,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  width: 50%;\n\n  background: url(", ") no-repeat center center;\n  background-size: cover;\n\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 50%;\n\n  background: ", ";\n  background-size: cover;\n\n  ", "\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -224,7 +222,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    height: 600px;\n  "]);
+  var data = _taggedTemplateLiteral(["\n    height: 600px;\n    padding: 0;\n  "]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -234,7 +232,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n  display: flex;\n  background-color: ", ";\n  height: 500px;\n\n  ", "\n\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n  display: flex;\n  background-color: ", ";\n  height: 500px;\n  padding: 2rem;\n\n  ", "\n\n  ", "\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -255,65 +253,68 @@ var PortfolioItemWrapper = _styledComponents["default"].div(_templateObject(), f
 
 exports.PortfolioItemWrapper = PortfolioItemWrapper;
 
-var PortfolioImage = _styledComponents["default"].div(_templateObject4(), _stockImg["default"], (0, _theme["default"])().lg(_templateObject5()));
+var PortfolioImage = _styledComponents["default"].div(_templateObject4(), function (_ref3) {
+  var imgUrl = _ref3.imgUrl;
+  return "url(".concat(imgUrl, ") no-repeat center center");
+}, (0, _theme["default"])().lg(_templateObject5()));
 
 exports.PortfolioImage = PortfolioImage;
 
-var PortfolioAdCopy = _styledComponents["default"].div(_templateObject6(), (0, _theme["default"])().lg(_templateObject7()), function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.main.primary;
-}, (0, _theme["default"])().lg(_templateObject8()), (0, _theme["default"])().md(_templateObject9()), function (_ref4) {
+var PortfolioAdCopy = _styledComponents["default"].div(_templateObject6(), (0, _theme["default"])().lg(_templateObject7()), function (_ref4) {
   var theme = _ref4.theme;
+  return theme.main.primary;
+}, (0, _theme["default"])().lg(_templateObject8()), (0, _theme["default"])().md(_templateObject9()), function (_ref5) {
+  var theme = _ref5.theme;
   return theme.main.text;
 }, (0, _theme["default"])().lg(_templateObject10()), (0, _theme["default"])().md(_templateObject11()));
 
 exports.PortfolioAdCopy = PortfolioAdCopy;
 
-var TechContainer = _styledComponents["default"].div(_templateObject12(), (0, _theme["default"])().lg(_templateObject13(), function (_ref5) {
-  var theme = _ref5.theme;
+var TechContainer = _styledComponents["default"].div(_templateObject12(), (0, _theme["default"])().lg(_templateObject13(), function (_ref6) {
+  var theme = _ref6.theme;
   return theme.main.greyAlt;
 }));
 
 exports.TechContainer = TechContainer;
 
-var Tech = _styledComponents["default"].div(_templateObject14(), function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.main.secondary;
-}, (0, _theme["default"])().lg(_templateObject15(), function (_ref7) {
+var Tech = _styledComponents["default"].div(_templateObject14(), function (_ref7) {
   var theme = _ref7.theme;
+  return theme.main.secondary;
+}, (0, _theme["default"])().lg(_templateObject15(), function (_ref8) {
+  var theme = _ref8.theme;
   return theme.main.greyAlt;
 }));
 
 exports.Tech = Tech;
 
-var TechList = _styledComponents["default"].span(_templateObject16(), function (_ref8) {
-  var theme = _ref8.theme;
+var TechList = _styledComponents["default"].span(_templateObject16(), function (_ref9) {
+  var theme = _ref9.theme;
   return theme.main.text;
 }, (0, _theme["default"])().lg(_templateObject17()), (0, _theme["default"])().md(_templateObject18()));
 
 exports.TechList = TechList;
 
-var PortfolioItemButton = _styledComponents["default"].a(_templateObject19(), function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.main.secondary;
-}, function (_ref10) {
+var PortfolioItemButton = _styledComponents["default"].a(_templateObject19(), function (_ref10) {
   var theme = _ref10.theme;
   return theme.main.secondary;
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.main.body;
+  return theme.main.secondary;
 }, function (_ref12) {
   var theme = _ref12.theme;
-  return theme.main.secondary;
-}, (0, _theme["default"])().lg(_templateObject20(), function (_ref13) {
+  return theme.main.body;
+}, function (_ref13) {
   var theme = _ref13.theme;
+  return theme.main.secondary;
+}, (0, _theme["default"])().lg(_templateObject20(), function (_ref14) {
+  var theme = _ref14.theme;
   return theme.main.greyAlt;
 }), (0, _theme["default"])().md(_templateObject21()));
 
 exports.PortfolioItemButton = PortfolioItemButton;
 
-var PortfolioItemButtonWrapper = _styledComponents["default"].div(_templateObject22(), (0, _theme["default"])().lg(_templateObject23(), function (_ref14) {
-  var theme = _ref14.theme;
+var PortfolioItemButtonWrapper = _styledComponents["default"].div(_templateObject22(), (0, _theme["default"])().lg(_templateObject23(), function (_ref15) {
+  var theme = _ref15.theme;
   return theme.main.greyAlt;
 }));
 

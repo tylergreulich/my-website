@@ -136,7 +136,7 @@ var Post = _styledComponents["default"].article(_templateObject5(), function (_r
   var theme = _ref4.theme;
   return theme.main.primary;
 }, function (props) {
-  return props.theme.main.primary;
+  return props.theme.main.text;
 }, function (props) {
   return props.theme.main.text;
 });

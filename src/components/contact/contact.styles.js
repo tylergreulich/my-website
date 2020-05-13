@@ -31,10 +31,10 @@ export const StyledForm = styled(Form)`
   background-color: ${({ theme }) => theme.main.grey};
   color: ${({ theme }) => theme.body};
   padding: 56px;
-  margin-bottom: 3.5rem;
+  margin-bottom: 0;
 
   @media (max-width: 1199.98px) {
-    max-width: 80%;
+    width: 85%;
   }
 
   @media (max-width: 560px) {
@@ -68,8 +68,8 @@ export const StyledForm = styled(Form)`
   input[type="text"],
   input[type="email"],
   textarea {
-    &:active:not(:invalid),
-    &:focus:not(:invalid) {
+    &:active,
+    &:focus {
       border: 0.15rem solid ${({ theme }) => theme.main.primary};
     }
 

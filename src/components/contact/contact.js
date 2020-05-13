@@ -26,7 +26,7 @@ function capitalizeFirstLetter(string) {
 
 const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
   <div>
-    <label for={name}>{capitalizeFirstLetter(name)}</label>
+    <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>
     <input type="hidden" name="bot-field" />
     <input
       name={name}
@@ -57,21 +57,26 @@ export const Contact = ({ location }) => {
             setSubmitting(true)
 
             // async call
-            const r = await Axios.post("/", data).catch(error => {
+            await Axios.post("/", data).catch(error => {
               console.error(error)
               setStatus("Something went wrong")
             })
 
-            await new Promise(() =>
+            await new Promise(res =>
               setTimeout(() => {
                 setStatus("Sent!")
+                res()
               }, 2500)
             )
 
-            setSubmitting(false)
-            setStatus("Send Message")
+            await new Promise(() => {
+              setTimeout(() => {
+                setSubmitting(false)
+                setStatus("Send Message")
 
-            resetForm()
+                resetForm()
+              }, 3000)
+            })
           }}
           validationSchema={validationSchema}
           validateOnChange
@@ -134,7 +139,7 @@ export const Contact = ({ location }) => {
                   }}
                 />
                 <div>
-                  <label for="message">Message</label>
+                  <label htmlFor="message">Message</label>
                   <textarea
                     type="textarea"
                     value={values.message}

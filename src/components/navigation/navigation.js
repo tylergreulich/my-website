@@ -57,12 +57,10 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true })
 
-    console.log(isMobileNavActive)
-
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [])
+  })
 
   const handleIsMobileActive = () => {
     setIsMobileNavActive(!isMobileNavActive)

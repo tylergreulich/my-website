@@ -10,32 +10,42 @@ import {
   TechList,
 } from "./portfolioItem.styles"
 
-export const PortfolioItem = ({ last = false }) => {
+export const PortfolioItem = ({
+  last = false,
+  title,
+  description,
+  tech,
+  githubUrl,
+  liveUrl,
+  imgUrl,
+}) => {
   return (
     <PortfolioItemWrapper last={last}>
-      <PortfolioImage />
+      <a
+        href={liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          height: "50%",
+        }}
+      >
+        <PortfolioImage imgUrl={imgUrl} />
+      </a>
       <PortfolioAdCopy>
         <div id="projectInfo">
-          <h4>Kiyoshi's Teriyaki and Sushi</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sem
-            purus, porttitor sit amet volutpat a, pharetra id purus. Nam lacinia
-            dui ut sem scelerisque eleifend. Nunc neque dui, gravida quis quam
-            a, iaculis suscipit mauris. Aliquam tempor odio magna, in commodo
-            nunc tincidunt nec. Phasellus non lorem rutrum, eleifend sem vel,
-            sollicitudin elit. In a purus elementum, euismod quam vel,
-            sollicitudin ex.
-          </p>
+          <h4>{title}</h4>
+          <p>{description}</p>
         </div>
         <TechContainer>
           <Tech>Tech</Tech>
-          <TechList>React, TypeScript, Laravel, MySQL</TechList>
+          <TechList>{tech}</TechList>
         </TechContainer>
         <PortfolioItemButtonWrapper>
-          <PortfolioItemButton href="/">Live Site</PortfolioItemButton>
+          <PortfolioItemButton href={liveUrl}>Live Site</PortfolioItemButton>
           <PortfolioItemButton
-            href="https://github.com/url/kiyoshi-restaurant"
+            href={githubUrl}
             target="_blank"
+            rel="noopener noreferrer"
             style={{
               marginTop: "1rem",
             }}

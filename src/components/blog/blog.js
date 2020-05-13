@@ -108,7 +108,7 @@ export const LISTING_QUERY = graphql`
             date(formatString: "MMMM DD, YYYY")
             featuredImg {
               childImageSharp {
-                fluid(maxWidth: 800) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }

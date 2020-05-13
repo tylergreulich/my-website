@@ -68,7 +68,7 @@ export const Post = styled.article`
     color: ${({ theme }) => theme.main.primary};
 
     &:hover {
-      color: ${props => props.theme.main.primary};
+      color: ${props => props.theme.main.text};
     }
 
     @media (max-width: 960px) {

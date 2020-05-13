@@ -14,8 +14,6 @@ const GlobalStyle = createGlobalStyle`
 const Layout = ({ children }) => {
   const stored = localStorage.getItem("isDarkMode")
 
-  console.log(stored)
-
   const [isDarkMode, setIsDarkMode] = React.useState(
     stored === "true" ? true : false
   )
