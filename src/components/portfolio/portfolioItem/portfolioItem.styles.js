@@ -18,16 +18,22 @@ export const PortfolioItemWrapper = styled.div`
   `}
 `
 
-export const PortfolioImage = styled.div`
+export const ImageWrapper = styled.div`
   width: 50%;
+  height: 100%;
+
+  ${media().lg`
+    height: 50%;
+    width: 100%;
+  `}
+`
+
+export const PortfolioImage = styled.div`
+  width: 100%;
+  height: 100%;
 
   background: ${({ imgUrl }) => `url(${imgUrl}) no-repeat center center`};
   background-size: cover;
-
-  ${media().lg`
-    width: 100%;
-    height: 100%;
-  `}
 `
 
 export const PortfolioAdCopy = styled.div`

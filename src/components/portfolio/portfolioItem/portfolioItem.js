@@ -1,5 +1,6 @@
 import React from "react"
 import {
+  ImageWrapper,
   PortfolioAdCopy,
   PortfolioImage,
   PortfolioItemButton,
@@ -21,16 +22,9 @@ export const PortfolioItem = ({
 }) => {
   return (
     <PortfolioItemWrapper last={last}>
-      <a
-        href={liveUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          height: "50%",
-        }}
-      >
+      <ImageWrapper href={liveUrl} target="_blank" rel="noopener noreferrer">
         <PortfolioImage imgUrl={imgUrl} />
-      </a>
+      </ImageWrapper>
       <PortfolioAdCopy>
         <div id="projectInfo">
           <h4>{title}</h4>
