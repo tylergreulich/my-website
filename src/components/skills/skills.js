@@ -32,7 +32,7 @@ import { LogoContainer } from "./skillsIcon/skillsIcon.styles"
 export const Skills = () => {
   return (
     <Element name="skills">
-      <SkillsText>Some of the Tools I've Used</SkillsText>
+      <SkillsText>The Tools I Use</SkillsText>
       <SkillsContainer>
         <FrontendContainer>
           <FrontendText>Frontend</FrontendText>

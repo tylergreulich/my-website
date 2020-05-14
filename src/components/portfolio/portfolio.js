@@ -10,8 +10,8 @@ export const Portfolio = () => {
       <PortfolioText>My Work</PortfolioText>
 
       <PortfolioContainer>
-        {portfolioItemsData.map(item => (
-          <PortfolioItem {...item} />
+        {portfolioItemsData.map((item, index) => (
+          <PortfolioItem key={index} {...item} />
           // <PortfolioItem last={true} />
         ))}
       </PortfolioContainer>

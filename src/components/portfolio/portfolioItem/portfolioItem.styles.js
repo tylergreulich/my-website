@@ -18,9 +18,10 @@ export const PortfolioItemWrapper = styled.div`
   `}
 `
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled.a`
   width: 50%;
   height: 100%;
+  cursor: pointer;
 
   ${media().lg`
     height: 50%;

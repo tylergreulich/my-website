@@ -9,6 +9,8 @@ var _movieDb = _interopRequireDefault(require("images/movie-db.png"));
 
 var _reactFm = _interopRequireDefault(require("images/react-fm.png"));
 
+var _realEstateApp = _interopRequireDefault(require("images/real-estate-app.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var portfolioItemsData = [{
@@ -20,10 +22,17 @@ var portfolioItemsData = [{
   imgUrl: _reactFm["default"]
 }, {
   title: "Movie DB",
-  description: "An application that movies from The Movie DB API that includes movies of similar genres for each movie you view, and has a searchbar for the user to use with auto-complete baked in.",
+  description: "An application that movies from The Movie DB API that includes movies of similar genres for each movie you view, and has a searchbar for the user to use with autocomplete functionality baked in.",
   tech: "React, TypeScript",
   githubUrl: "https://github.com/tylergreulich/react-mdb",
   liveUrl: "https://moviedb.tylergreulich.com/",
   imgUrl: _movieDb["default"]
+}, {
+  title: "Real Estate App",
+  description: "I needed to get better at filtering data with React so I created a proof of concept real estate application with Material UI and 10 different ways to filter the properties on the page as well as a way to paginate the data. Aside from getting good at filtering data I also learned how to work with and customize a CSS framework without the code getting too messy.",
+  tech: "React, TypeScript",
+  githubUrl: "https://github.com/tylergreulich/real-estate",
+  liveUrl: "https://real-estate-app.tylergreulich.com/",
+  imgUrl: _realEstateApp["default"]
 }];
 exports.portfolioItemsData = portfolioItemsData;

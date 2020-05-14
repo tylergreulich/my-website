@@ -20,10 +20,11 @@ const Hero = () => {
           <h5>Web Developer</h5>
           <p>
             My name is Tyler Greulich and I'm a Full-Stack Web Developer that
-            enjoys creating applications with a focus on UI / UX while writing
-            clean, elegant, maintainable code. Currently I'm looking to get
-            hired at a company that'll constantly challenge me to get outside of
-            my comfort zone and learn new technologies.
+            creates websites with a focus on UI / UX while writing clean,
+            elegant, maintainable code. I prefer using React and Node but will
+            quickly learn whatever technology the project requires. Currently
+            I'm looking to get hired at a company that'll constantly challenge
+            me to get outside of my comfort zone and learn new things.
           </p>
           <ButtonWrapper>
             <PortfolioButton
