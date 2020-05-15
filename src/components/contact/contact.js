@@ -141,9 +141,21 @@ export const Contact = ({ location }) => {
             "form-name": "contact",
           }}
           onSubmit={values => {
-            setIsSubmitting(true)
-            setFormValues({ ...values })
-            setExecuting(true)
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: encode({ "form-name": "contact-demo", ...values }),
+            })
+              .then(() => {
+                alert("Success")
+              })
+              .catch(() => {
+                alert("Error")
+              })
+
+            // setIsSubmitting(true)
+            // setFormValues({ ...values })
+            // setExecuting(true)
             recaptchaRef.current.execute()
           }}
           validationSchema={validationSchema}
