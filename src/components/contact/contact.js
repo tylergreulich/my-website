@@ -1,5 +1,4 @@
 import React from "react"
-import ReCAPTCHA from "react-google-recaptcha"
 import { Element } from "react-scroll"
 import {
   ButtonContainer,
@@ -48,23 +47,8 @@ export const Contact = ({ location }) => {
                 id="message"
               />
             </div>
-            <ReCAPTCHA
-              sitekey={process.env.GATSBY_RECAPTCHA_KEY}
-              ref={recaptchaRef}
-              // data-netlify-recaptcha="true"
-              onExpire={onExpire}
-              size="invisible"
-              onChange={handleRecaptcha}
-              badge="inline"
-            />
             <ButtonContainer>
-              <button type="submit">
-                {isSubmitting
-                  ? "Sending..."
-                  : msgSent
-                  ? "Sent!"
-                  : "Send Message"}
-              </button>
+              <button type="submit">Send Message</button>
             </ButtonContainer>
           </StyledForm>
         </>
