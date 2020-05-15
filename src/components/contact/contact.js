@@ -66,7 +66,7 @@ export const Contact = ({ location }) => {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: qs.stringify(data),
-        url: "https://tylergreulich.com/",
+        url: "/",
       }
 
       try {
