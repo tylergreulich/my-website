@@ -62,8 +62,6 @@ export const Contact = ({ location }) => {
         "g-recaptcha-response": token,
       }
 
-      console.log("d", data)
-
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -73,9 +71,11 @@ export const Contact = ({ location }) => {
 
       try {
         await Axios(options)
+        isSubmitting(false)
         setMsgSent(true)
         resetEverything()
       } catch (e) {
+        console.log(e)
         setErrMsg(e.message)
       }
     }
