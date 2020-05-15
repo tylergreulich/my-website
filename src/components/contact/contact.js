@@ -21,9 +21,28 @@ const MyInput = ({ name, type, errors, handleChange }) => (
 export const Contact = ({ location }) => {
   return (
     <Element name="contact-me">
-      <ContactText>Contact Me</ContactText>
       <FormWrapper>
-        <>
+        <ContactText>Contact Me</ContactText>
+        <StyledForm method="post" action="#">
+          <MyInput name="name" type="text" />
+          <MyInput name="email" type="email" />
+          <MyInput name="subject" type="text" />
+          <div>
+            <label htmlFor="message">Message</label>
+            <textarea
+              type="textarea"
+              name="message"
+              rows={4}
+              required
+              id="message"
+            />
+          </div>
+          <div data-netlify-recaptcha="true"></div>
+          <ButtonContainer>
+            <button type="submit">Send Message</button>
+          </ButtonContainer>
+        </StyledForm>
+        {/* <>
           <StyledForm
             name="new-contact"
             data-netlify="true"
@@ -33,7 +52,6 @@ export const Contact = ({ location }) => {
           >
             <input type="hidden" name="form-name" value="new-contact" />
             <input type="hidden" name="bot-field" />
-            <div data-netlify-recaptcha="true"></div>
             <MyInput name="name" type="text" />
             <MyInput name="email" type="email" />
             <MyInput name="subject" type="text" />
@@ -47,11 +65,12 @@ export const Contact = ({ location }) => {
                 id="message"
               />
             </div>
+            <div data-netlify-recaptcha="true"></div>
             <ButtonContainer>
               <button type="submit">Send Message</button>
             </ButtonContainer>
           </StyledForm>
-        </>
+        </> */}
       </FormWrapper>
     </Element>
   )
