@@ -62,6 +62,8 @@ export const Contact = ({ location }) => {
         "g-recaptcha-response": token,
       }
 
+      console.log("d", data)
+
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -70,7 +72,8 @@ export const Contact = ({ location }) => {
       }
 
       try {
-        await Axios(options)
+        const r = await Axios(options)
+        console.log("r", r)
         setMsgSent(true)
         formReset()
       } catch (e) {
@@ -217,7 +220,6 @@ export const Contact = ({ location }) => {
                   </div>
                   <ReCAPTCHA
                     sitekey={process.env.GATSBY_RECAPTCHA_KEY}
-                    onChange={value => console.log(value)}
                     ref={recaptchaRef}
                     data-netlify-recaptcha="true"
                     onError={onError}
