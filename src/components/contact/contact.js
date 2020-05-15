@@ -136,10 +136,17 @@ export const Contact = ({ location }) => {
             "form-name": "contact",
           }}
           onSubmit={values => {
-            setIsSubmitting(true)
-            setFormValues({ ...values })
-            setExecuting(true)
-            recaptchaRef.current.execute()
+            const form = this.ContactForm.current
+            fetch("/", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: this.encode({
+                "form-name": form.getAttribute("name"),
+                ...this.state,
+              }),
+            })
+              .then(() => navigate("/"))
+              .catch(error => alert(error))
           }}
           validationSchema={validationSchema}
           validateOnChange
@@ -255,6 +262,29 @@ export const Contact = ({ location }) => {
           }}
         </Formik>
       </FormWrapper>
+      <form
+        name="blog"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        {" "}
+        <input type="hidden" name="bot-field" />{" "}
+        <input type="hidden" name="form-name" value="blog" />{" "}
+        <div className="field half first">
+          <label htmlFor="name">Name</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div className="field half">
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" id="email" />
+        </div>
+        <div className="field">
+          <label htmlFor="message">Message</label>
+          <textarea name="message" id="message" rows="6" />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </Element>
   )
 }
