@@ -150,7 +150,7 @@ export const Contact = ({ location }) => {
             fetch("/", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({ "form-name": "contact-demo", ...values }),
+              body: encode({ "form-name": "contact", ...values }),
             })
               .then(() => {
                 alert("Success")
