@@ -12,6 +12,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Layout = ({ children }) => {
+  const [isMountedComponent, setIsMountedComponent] = React.useState(false)
+
   const stored =
     typeof window !== `undefined` ? localStorage.getItem("isDarkMode") : null
 
@@ -19,7 +21,13 @@ const Layout = ({ children }) => {
     stored === "true" ? true : false
   )
 
+  React.useEffect(() => {
+    setIsMountedComponent(true)
+  }, [])
+
   React.useEffect(() => {}, [isDarkMode])
+
+  if (!isMountedComponent) return <div />
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
