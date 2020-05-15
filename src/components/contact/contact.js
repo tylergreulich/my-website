@@ -70,10 +70,11 @@ export const Contact = ({ location }) => {
       }
 
       try {
-        await Axios(options)
+        console.log("trying")
+        const r = await Axios(options)
+        console.log(r)
         isSubmitting(false)
         setMsgSent(true)
-        console.log(msgSent)
       } catch (e) {
         setErrMsg(e.message)
       }
