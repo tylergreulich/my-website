@@ -23,7 +23,15 @@ export const Contact = ({ location }) => {
     <Element name="contact-me">
       <FormWrapper>
         <ContactText>Contact Me</ContactText>
-        <StyledForm method="post" action="#">
+        <StyledForm
+          name="contactt"
+          data-netlify="true"
+          method="post"
+          action="#"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="bot-field" />{" "}
+          <input type="hidden" name="form-name" value="contactt" />
           <MyInput name="name" type="text" />
           <MyInput name="email" type="email" />
           <MyInput name="subject" type="text" />
@@ -37,7 +45,6 @@ export const Contact = ({ location }) => {
               id="message"
             />
           </div>
-          <div data-netlify-recaptcha="true"></div>
           <ButtonContainer>
             <button type="submit">Send Message</button>
           </ButtonContainer>
