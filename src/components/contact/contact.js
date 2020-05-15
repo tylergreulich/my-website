@@ -11,7 +11,7 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-const MyInput = ({ name, type, errors, handleChange }) => (
+const MyInput = ({ name, type }) => (
   <div>
     <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>
     <input name={name} type={type} id={name} required />
@@ -29,7 +29,6 @@ export const Contact = ({ location }) => {
           method="post"
           action="#"
           data-netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
         >
           <input type="hidden" name="bot-field" />{" "}
           <input type="hidden" name="form-name" value="contactt" />
@@ -46,42 +45,10 @@ export const Contact = ({ location }) => {
               id="message"
             />
           </div>
-          <div>
-            <div data-netlify-recaptcha="true" />
-          </div>
           <ButtonContainer>
             <button type="submit">Send Message</button>
           </ButtonContainer>
         </StyledForm>
-        {/* <>
-          <StyledForm
-            name="new-contact"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            data-netlify-recaptcha="true"
-            method="post"
-          >
-            <input type="hidden" name="form-name" value="new-contact" />
-            <input type="hidden" name="bot-field" />
-            <MyInput name="name" type="text" />
-            <MyInput name="email" type="email" />
-            <MyInput name="subject" type="text" />
-            <div>
-              <label htmlFor="message">Message</label>
-              <textarea
-                type="textarea"
-                name="message"
-                rows={4}
-                required
-                id="message"
-              />
-            </div>
-            <div data-netlify-recaptcha="true"></div>
-            <ButtonContainer>
-              <button type="submit">Send Message</button>
-            </ButtonContainer>
-          </StyledForm>
-        </> */}
       </FormWrapper>
     </Element>
   )
