@@ -1,8 +1,6 @@
-import { Field, Formik } from "formik"
 import React from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { Element } from "react-scroll"
-import * as yup from "yup"
 import {
   ButtonContainer,
   ContactText,
@@ -10,26 +8,13 @@ import {
   StyledForm,
 } from "./contact.styles"
 
-const validationSchema = yup.object({
-  name: yup.string().required("Name field is required"),
-  email: yup
-    .string()
-    .email("Email must be a valid email")
-    .required("Email field is required"),
-  subject: yup.string().required("Subject field is required"),
-  message: yup.string().required("Message field is required"),
-})
-
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-const recaptchaRef = React.createRef()
-
-const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
+const MyInput = ({ name, value, type, errors, handleChange }) => (
   <div>
     <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>
-    <input type="hidden" name="bot-field" />
     <input
       name={name}
       value={value}
@@ -38,80 +23,28 @@ const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
       onChange={handleChange}
       required
     />
-    <strong>{touched[name] && errors[name] ? errors[name] : ""}</strong>
   </div>
 )
 
 export const Contact = ({ location }) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false)
-  const [executing, setExecuting] = React.useState(false)
-  const [formValues, setFormValues] = React.useState({})
-  const [verified, setVerified] = React.useState(false)
-  const [token, setToken] = React.useState("")
-  const [rcError, setRcError] = React.useState("")
+  const [formValues, setFormValues] = React.useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    "g-recaptcha-response": "",
+  })
   const [msgSent, setMsgSent] = React.useState(false)
-  const [formReset, setFormReset] = React.useState({})
-  const [errMsg, setErrMsg] = React.useState("")
 
-  // React.useEffect(() => {
-  //   const handleSubmit = async (formValues, token) => {
-  //     const data = {
-  //       ...formValues,
-  //       "g-recaptcha-response": token,
-  //     }
-
-  //     const options = {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //       data: qs.stringify(data),
-  //       url: "/",
-  //     }
-
-  //     console.log({ DATA: data, OPTS: options })
-
-  //     try {
-  //       const r = await Axios(options)
-  //       console.log(r)
-  //       setIsSubmitting(false)
-  //       setMsgSent(true)
-
-  //       await new Promise(() => {
-  //         setTimeout(() => {
-  //           setMsgSent(false)
-  //         }, 2500)
-  //       })
-  //     } catch (e) {
-  //       setErrMsg(e.message)
-  //     }
-  //   }
-
-  //   if (token) {
-  //     handleSubmit(formValues, token)
-  //   }
-  // }, [formReset, formValues, token])
+  const recaptchaRef = React.useRef()
 
   const resetReCaptcha = async () => {
-    console.log("resetting...")
     await recaptchaRef.current.reset()
-    setVerified(false)
-  }
-
-  const onError = () => {
-    console.log("error...")
-    setRcError(true)
   }
 
   const onExpire = () => {
-    console.log("expired...")
-    console.log("resetting...")
     resetReCaptcha()
-  }
-
-  const onVerify = token => {
-    console.log("verified...")
-    setToken(token)
-    setVerified(true)
-    setExecuting(false)
   }
 
   const encode = data => {
@@ -120,166 +53,118 @@ export const Contact = ({ location }) => {
       .join("&")
   }
 
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    setIsSubmitting(true)
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "new-contact",
+        ...formValues,
+      }),
+    })
+      .then(() => {
+        setIsSubmitting(false)
+        setMsgSent(true)
+      })
+      .catch(error => alert(error))
+  }
+
+  const handleChange = event => {
+    setFormValues({ [event.target.name]: event.target.value })
+  }
+
+  const handleRecaptcha = value => {
+    setFormValues({ "g-recaptcha-response": value })
+  }
+
+  const { name, email, subject, message } = formValues
+
+  console.log(name)
+
+  // const isEmpty =
+  //   name.length === 0 ||
+  //   email.length === 0 ||
+  //   subject.length === 0 ||
+  //   message.length === 0
+
   return (
     <Element name="contact-me">
       <ContactText>Contact Me</ContactText>
       <FormWrapper>
-        <Formik
-          initialValues={{
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-            "form-name": "new-contact",
-          }}
-          onSubmit={values => {
-            fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({
-                ...values,
-              }),
-            })
-              .then(res => console.log("Success"))
-              .catch(error => console.error(error))
-          }}
-          validationSchema={validationSchema}
-          validateOnChange
-        >
-          {({
-            values,
-            errors,
-            handleChange,
-            touched,
-            setFieldTouched,
-            resetForm,
-          }) => {
-            const isEmpty =
-              values.name.length === 0 ||
-              values.email.length === 0 ||
-              values.message.length === 0 ||
-              values.subject.length === 0 ||
-              errors.email ||
-              errors.message ||
-              errors.subject ||
-              errors.name
-
-            return (
-              <>
-                <StyledForm
-                  name="new-contact"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
-                  data-netlify-recaptcha="true"
-                >
-                  <Field type="hidden" name="form-name" value="new-contact" />
-                  <Field type="hidden" name="bot-field" />
-                  <MyInput
-                    name="name"
-                    type="text"
-                    errors={errors}
-                    touched={touched}
-                    value={values.name}
-                    handleChange={e => {
-                      setFieldTouched("name", true)
-                      handleChange(e)
-                    }}
-                  />
-                  <MyInput
-                    name="email"
-                    type="email"
-                    errors={errors}
-                    touched={touched}
-                    value={values.email}
-                    handleChange={e => {
-                      setFieldTouched("email", true)
-                      handleChange(e)
-                    }}
-                  />
-                  <MyInput
-                    name="subject"
-                    type="text"
-                    errors={errors}
-                    touched={touched}
-                    value={values.subject}
-                    handleChange={e => {
-                      setFieldTouched("subject", true)
-                      handleChange(e)
-                    }}
-                  />
-                  <div>
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      type="textarea"
-                      value={values.message}
-                      name="message"
-                      rows={4}
-                      required
-                      onChange={e => {
-                        setFieldTouched("message", true)
-                        handleChange(e)
-                      }}
-                      id="message"
-                    />
-                    <strong>
-                      {touched.message && errors.message
-                        ? errors.message
-                        : null}
-                    </strong>
-                  </div>
-                  <ReCAPTCHA
-                    sitekey={process.env.GATSBY_RECAPTCHA_KEY}
-                    ref={recaptchaRef}
-                    // data-netlify-recaptcha="true"
-                    onError={onError}
-                    onExpire={onExpire}
-                    size="invisible"
-                    onChange={onVerify}
-                    badge="inline"
-                  />
-                  {rcError && (
-                    <span className={`badge badge-primary mx-2 p-2`}>
-                      error
-                    </span>
-                  )}
-                  <ButtonContainer>
-                    <button type="submit" disabled={isEmpty}>
-                      {isSubmitting
-                        ? "Sending..."
-                        : msgSent
-                        ? "Sent!"
-                        : "Send Message"}
-                    </button>
-                  </ButtonContainer>
-                </StyledForm>
-              </>
-            )
-          }}
-        </Formik>
+        <>
+          <StyledForm
+            name="new-contact"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            data-netlify-recaptcha="true"
+            method="post"
+            onSubmit={handleSubmit}
+          >
+            <input type="hidden" name="form-name" value="new-contact" />
+            <input type="hidden" name="bot-field" />
+            <MyInput
+              name="name"
+              type="text"
+              value={name}
+              handleChange={e => {
+                handleChange(e)
+              }}
+            />
+            <MyInput
+              name="email"
+              type="email"
+              value={email}
+              handleChange={e => {
+                handleChange(e)
+              }}
+            />
+            <MyInput
+              name="subject"
+              type="text"
+              value={subject}
+              handleChange={e => {
+                handleChange(e)
+              }}
+            />
+            <div>
+              <label htmlFor="message">Message</label>
+              <textarea
+                type="textarea"
+                value={message}
+                name="message"
+                rows={4}
+                required
+                onChange={e => {
+                  handleChange(e)
+                }}
+                id="message"
+              />
+            </div>
+            <ReCAPTCHA
+              sitekey={process.env.GATSBY_RECAPTCHA_KEY}
+              ref={recaptchaRef}
+              // data-netlify-recaptcha="true"
+              onExpire={onExpire}
+              size="invisible"
+              onChange={handleRecaptcha}
+              badge="inline"
+            />
+            <ButtonContainer>
+              <button type="submit">
+                {isSubmitting
+                  ? "Sending..."
+                  : msgSent
+                  ? "Sent!"
+                  : "Send Message"}
+              </button>
+            </ButtonContainer>
+          </StyledForm>
+        </>
       </FormWrapper>
-      <form
-        name="blog"
-        method="post"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        {" "}
-        <input type="hidden" name="bot-field" />{" "}
-        <input type="hidden" name="form-name" value="blog" />{" "}
-        <div className="field half first">
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" />
-        </div>
-        <div className="field half">
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" />
-        </div>
-        <div className="field">
-          <label htmlFor="message">Message</label>
-          <textarea name="message" id="message" rows="6" />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
     </Element>
   )
 }

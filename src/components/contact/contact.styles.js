@@ -1,4 +1,3 @@
-import { Form } from "formik"
 import styled from "styled-components"
 
 export const ContactText = styled.h3`
@@ -25,7 +24,7 @@ export const FormWrapper = styled.section`
   }
 `
 
-export const StyledForm = styled(Form)`
+export const StyledForm = styled.form`
   width: 75%;
   height: 100%;
   background-color: ${({ theme }) => theme.main.grey};
