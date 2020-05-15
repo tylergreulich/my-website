@@ -21,8 +21,8 @@ const MyInput = ({ name, type, errors, handleChange }) => (
 export const Contact = ({ location }) => {
   return (
     <Element name="contact-me">
+      <ContactText>Contact Me</ContactText>
       <FormWrapper>
-        <ContactText>Contact Me</ContactText>
         <StyledForm
           name="contactt"
           data-netlify="true"
@@ -44,6 +44,9 @@ export const Contact = ({ location }) => {
               required
               id="message"
             />
+          </div>
+          <div>
+            <div data-netlify-recaptcha="true" />
           </div>
           <ButtonContainer>
             <button type="submit">Send Message</button>
