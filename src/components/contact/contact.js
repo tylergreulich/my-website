@@ -73,9 +73,8 @@ export const Contact = ({ location }) => {
         await Axios(options)
         isSubmitting(false)
         setMsgSent(true)
-        resetEverything()
+        console.log(msgSent)
       } catch (e) {
-        console.log(e)
         setErrMsg(e.message)
       }
     }
@@ -237,31 +236,10 @@ export const Contact = ({ location }) => {
                     onChange={onVerify}
                     badge="inline"
                   />
-                  {executing && (
-                    <span className={`badge badge-primary mx-2 p-2`}>
-                      executing
-                    </span>
-                  )}
                   {rcError && (
                     <span className={`badge badge-primary mx-2 p-2`}>
                       error
                     </span>
-                  )}
-                  {rcError && (
-                    <button
-                      className="btn btn-link text-dark"
-                      onClick={() => resetEverything(resetForm)}
-                    >
-                      reset
-                    </button>
-                  )}
-                  {(msgSent || errMsg) && (
-                    <button
-                      className="btn btn-lg btn-link text-dark"
-                      onClick={() => resetEverything(resetForm)}
-                    >
-                      reset form
-                    </button>
                   )}
                   <ButtonContainer>
                     <button type="submit" disabled={isEmpty}>
