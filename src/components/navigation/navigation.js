@@ -77,8 +77,8 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
         {!isDarkMode ? (
           <ThemeToggleWrapper
             onClick={() => {
-              setIsDarkMode(!isDarkMode)
-              localStorage.setItem("isDarkMode", !isDarkMode)
+              setIsDarkMode(false)
+              localStorage.setItem("isDarkMode", false)
             }}
           >
             <ThemeToggle icon={faSun} />
@@ -86,8 +86,8 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
         ) : (
           <ThemeToggleWrapper
             onClick={() => {
-              setIsDarkMode(!isDarkMode)
-              localStorage.setItem("isDarkMode", !isDarkMode)
+              setIsDarkMode(true)
+              localStorage.setItem("isDarkMode", true)
             }}
           >
             <ThemeToggle icon={faMoon} />
