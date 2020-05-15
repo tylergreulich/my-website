@@ -12,13 +12,11 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Layout = ({ children }) => {
-  const stored = localStorage.getItem("isDarkMode")
+  const [isDarkMode, setIsDarkMode] = React.useState(null)
 
-  const [isDarkMode, setIsDarkMode] = React.useState(
-    stored === "true" ? true : false
-  )
-
-  React.useEffect(() => {}, [isDarkMode])
+  React.useEffect(() => {
+    setIsDarkMode(localStorage.getItem("isDarkMode") ? true : false)
+  }, [isDarkMode])
 
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>

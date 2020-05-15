@@ -18,7 +18,7 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
 
   const { allMdx } = useStaticQuery(LISTING_QUERY)
 
-  const isSmallerDevice = window.innerWidth <= 1312
+  let isSmallerDevice = false
 
   const itemsPerPage = isSmallerDevice ? 4 : 3
 
@@ -29,6 +29,10 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
   const lastPage = Math.ceil(allMdx.edges.length / itemsPerPage)
 
   let currentItems = allMdx.edges.slice(indexOfFirstItem, indexOfLastItem)
+
+  if (typeof window !== `undefined`) {
+    isSmallerDevice = window.innerWidth <= 1312
+  }
 
   return (
     <Element name="blog">

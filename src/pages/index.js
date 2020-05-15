@@ -7,15 +7,17 @@ import React from "react"
 import { Blog } from "../components/blog/blog"
 import { Contact } from "../components/contact/contact"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Hero />
-    <Portfolio />
-    <Skills />
-    <Blog />
-    <Contact />
-  </Layout>
-)
+const IndexPage = () => {
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Hero />
+      <Portfolio />
+      <Skills />
+      <Blog />
+      <Contact />
+    </Layout>
+  )
+}
 
 export default IndexPage

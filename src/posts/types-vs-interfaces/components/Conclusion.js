@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from "react"
 
 const Conclusion = () => (
   <>
@@ -12,12 +12,12 @@ const Conclusion = () => (
     <div>
       <h4
         style={{
-          marginBottom: '2rem'
+          marginBottom: "2rem",
         }}
       >
         Recap
       </h4>
-      <ul style={{ marginLeft: '2rem', lineHeight: '150%', fontSize: '1rem' }}>
+      <ul style={{ marginLeft: "2rem", lineHeight: "150%", fontSize: "1rem" }}>
         <li>
           Type aliases can act like interfaces, however, there are three
           important distinctions (union types, extending interfaces, declaration
@@ -31,6 +31,6 @@ const Conclusion = () => (
       </ul>
     </div>
   </>
-);
+)
 
-export default Conclusion;
+export default Conclusion

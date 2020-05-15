@@ -1,5 +1,5 @@
 import Img from "gatsby-image"
-import * as React from "react"
+import React from "react"
 import Layout from "./layout"
 import {
   BlogContainer,
@@ -11,7 +11,6 @@ import {
 
 const PostLayout = ({ data, ...props }) => {
   if (data) {
-    console.log(data)
     const { title, date, featuredImg } = data.mdx.frontmatter
     const { location, children } = props
     return (

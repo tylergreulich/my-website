@@ -1,7 +1,7 @@
 ---
 path: "/types-vs-interfaces"
 title: "Types vs Interfaces in TypeScript"
-date: "2020-02-23"
+date: "2020-04-23"
 featuredImg: "./images/post-two-featured-img.jpg"
 ---
 
@@ -59,7 +59,6 @@ type RectangleShape = (Shape | Perimeter) & Point
 class Rectangle implements RectangleShape {
   x = 2
   y = 3
-
   area() {
     return this.x + this.y
   }
