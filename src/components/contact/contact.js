@@ -15,82 +15,11 @@ function capitalizeFirstLetter(string) {
 const MyInput = ({ name, value, type, errors, handleChange }) => (
   <div>
     <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>
-    <input
-      name={name}
-      value={value}
-      type={type}
-      id={name}
-      onChange={handleChange}
-      required
-    />
+    <input name={name} value={value} type={type} id={name} required />
   </div>
 )
 
 export const Contact = ({ location }) => {
-  const [isSubmitting, setIsSubmitting] = React.useState(false)
-  const [formValues, setFormValues] = React.useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    "g-recaptcha-response": "",
-  })
-  const [msgSent, setMsgSent] = React.useState(false)
-
-  const recaptchaRef = React.useRef()
-
-  const resetReCaptcha = async () => {
-    await recaptchaRef.current.reset()
-  }
-
-  const onExpire = () => {
-    resetReCaptcha()
-  }
-
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
-  }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-
-    setIsSubmitting(true)
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": "new-contact",
-        ...formValues,
-      }),
-    })
-      .then(() => {
-        setIsSubmitting(false)
-        setMsgSent(true)
-      })
-      .catch(error => alert(error))
-  }
-
-  const handleChange = event => {
-    setFormValues({ [event.target.name]: event.target.value })
-  }
-
-  const handleRecaptcha = value => {
-    setFormValues({ "g-recaptcha-response": value })
-  }
-
-  const { name, email, subject, message } = formValues
-
-  console.log(name)
-
-  // const isEmpty =
-  //   name.length === 0 ||
-  //   email.length === 0 ||
-  //   subject.length === 0 ||
-  //   message.length === 0
-
   return (
     <Element name="contact-me">
       <ContactText>Contact Me</ContactText>
@@ -102,34 +31,12 @@ export const Contact = ({ location }) => {
             data-netlify-honeypot="bot-field"
             data-netlify-recaptcha="true"
             method="post"
-            onSubmit={handleSubmit}
           >
             <input type="hidden" name="form-name" value="new-contact" />
             <input type="hidden" name="bot-field" />
-            <MyInput
-              name="name"
-              type="text"
-              value={name}
-              handleChange={e => {
-                handleChange(e)
-              }}
-            />
-            <MyInput
-              name="email"
-              type="email"
-              value={email}
-              handleChange={e => {
-                handleChange(e)
-              }}
-            />
-            <MyInput
-              name="subject"
-              type="text"
-              value={subject}
-              handleChange={e => {
-                handleChange(e)
-              }}
-            />
+            <MyInput name="name" type="text" value={name} />
+            <MyInput name="email" type="email" value={email} />
+            <MyInput name="subject" type="text" value={subject} />
             <div>
               <label htmlFor="message">Message</label>
               <textarea
@@ -138,9 +45,6 @@ export const Contact = ({ location }) => {
                 name="message"
                 rows={4}
                 required
-                onChange={e => {
-                  handleChange(e)
-                }}
                 id="message"
               />
             </div>
