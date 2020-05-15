@@ -1,4 +1,3 @@
-import Axios from "axios"
 import { Formik } from "formik"
 import React from "react"
 import { Element } from "react-scroll"
@@ -53,37 +52,9 @@ export const Contact = ({ location }) => {
             subject: "",
             message: "",
           }}
-          onSubmit={async (data, { setSubmitting, resetForm }) => {
-            setSubmitting(true)
-
-            // async call
-            await Axios.post("/", data).catch(error => {
-              console.error(error)
-              setStatus("Something went wrong")
-            })
-
-            await new Promise(res =>
-              setTimeout(() => {
-                setStatus("Sent!")
-                res()
-              }, 2500)
-            )
-
-            await new Promise(() => {
-              setTimeout(() => {
-                setSubmitting(false)
-                setStatus("Send Message")
-
-                resetForm()
-              }, 3000)
-            })
-          }}
           validationSchema={validationSchema}
           validateOnChange
           name="contact"
-          netlify-honeypot="bot-field"
-          data-netlify="true"
-          method="post"
         >
           {({
             values,
@@ -104,7 +75,7 @@ export const Contact = ({ location }) => {
               errors.name
 
             return (
-              <StyledForm action="POST" data-netlify="true">
+              <StyledForm method="POST" data-netlify="true">
                 <MyInput
                   name="name"
                   type="text"
