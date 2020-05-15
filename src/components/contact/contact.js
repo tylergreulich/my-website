@@ -248,6 +248,9 @@ export const Contact = ({ location }) => {
                     </button>
                   </ButtonContainer>
                 </StyledForm>
+                <StyledForm name="netlifytest" data-netlify="true">
+                  <Field type="hidden" name="form-name" value="contact" />
+                </StyledForm>
               </>
             )
           }}
