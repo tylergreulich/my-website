@@ -45,7 +45,7 @@ const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
 )
 
 export const Contact = ({ location }) => {
-  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  // const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [executing, setExecuting] = React.useState(false)
   const [formValues, setFormValues] = React.useState({})
   const [verified, setVerified] = React.useState(false)
@@ -127,6 +127,12 @@ export const Contact = ({ location }) => {
     setExecuting(false)
   }
 
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
   return (
     <Element name="contact">
       <ContactText>Contact Me</ContactText>
@@ -140,11 +146,28 @@ export const Contact = ({ location }) => {
             "bot-field": "",
             "form-name": "contact",
           }}
-          onSubmit={values => {
-            setIsSubmitting(true)
-            setFormValues({ ...values })
-            setExecuting(true)
+          onSubmit={(values, actions) => {
+            actions.setSubmitting(true)
+
             recaptchaRef.current.execute()
+
+            if (token) {
+              fetch("/", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: encode({ "form-name": "contact-demo", ...values }),
+              })
+                .then(() => {
+                  alert("Success")
+                  actions.resetForm()
+                })
+                .catch(() => {
+                  alert("Error")
+                })
+                .finally(() => actions.setSubmitting(false))
+            }
           }}
           validationSchema={validationSchema}
           validateOnChange
@@ -155,7 +178,7 @@ export const Contact = ({ location }) => {
             handleChange,
             touched,
             setFieldTouched,
-            resetForm,
+            isSubmitting,
           }) => {
             const isEmpty =
               values.name.length === 0 ||
