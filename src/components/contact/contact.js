@@ -120,15 +120,6 @@ export const Contact = ({ location }) => {
       .join("&")
   }
 
-  const serialize = function (obj) {
-    var str = []
-    for (var p in obj)
-      if (obj.hasOwnProperty(p)) {
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]))
-      }
-    return str.join("&")
-  }
-
   return (
     <Element name="contact-me">
       <ContactText>Contact Me</ContactText>
@@ -139,14 +130,13 @@ export const Contact = ({ location }) => {
             email: "",
             subject: "",
             message: "",
-            "bot-field": "",
-            "form-name": "contact",
+            "form-name": "new-contact",
           }}
           onSubmit={values => {
             fetch("/", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: serialize({
+              body: encode({
                 ...values,
               }),
             })
@@ -177,12 +167,12 @@ export const Contact = ({ location }) => {
             return (
               <>
                 <StyledForm
-                  name="contact"
+                  name="new-contact"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   data-netlify-recaptcha="true"
                 >
-                  <Field type="hidden" name="form-name" value="contact" />
+                  <Field type="hidden" name="form-name" value="new-contact" />
                   <Field type="hidden" name="bot-field" />
                   <MyInput
                     name="name"
