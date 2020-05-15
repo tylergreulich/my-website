@@ -72,14 +72,14 @@ export const Contact = ({ location }) => {
       }
 
       try {
-        const r = await Axios(options)
-        console.log("r", r)
+        await Axios(options)
         setMsgSent(true)
-        formReset()
+        resetEverything()
       } catch (e) {
         setErrMsg(e.message)
       }
     }
+
     if (token) {
       handleSubmit(formValues, token)
     }
@@ -89,11 +89,13 @@ export const Contact = ({ location }) => {
     if (rcError) {
       setRcError(false)
     }
+
     if (resetForm) {
       setMsgSent(false)
       setErrMsg(false)
       resetForm()
     }
+
     resetReCaptcha()
   }
 
@@ -263,7 +265,11 @@ export const Contact = ({ location }) => {
                   )}
                   <ButtonContainer>
                     <button type="submit" disabled={isEmpty}>
-                      Send Message
+                      {isSubmitting
+                        ? "Sending..."
+                        : msgSent
+                        ? "Sent!"
+                        : "Send Message"}
                     </button>
                   </ButtonContainer>
                 </StyledForm>
