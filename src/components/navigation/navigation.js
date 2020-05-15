@@ -47,8 +47,8 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
   const [newBgColor, setNewBgColor] = React.useState(false)
 
   const handleScroll = () => {
-    if (typeof window !== `undefined` && window.pageYOffset) {
-      if (window && window.pageYOffset >= 978) {
+    if (typeof window !== `undefined`) {
+      if (window.pageYOffset >= 978) {
         setNewBgColor(true)
       } else {
         setNewBgColor(false)
