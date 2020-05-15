@@ -104,7 +104,7 @@ export const Contact = ({ location }) => {
               errors.name
 
             return (
-              <StyledForm>
+              <StyledForm action="POST" data-netlify="true">
                 <MyInput
                   name="name"
                   type="text"
@@ -155,6 +155,9 @@ export const Contact = ({ location }) => {
                   <strong>
                     {touched.message && errors.message ? errors.message : null}
                   </strong>
+                </div>
+                <div>
+                  <div data-netlify-recaptcha="true" />
                 </div>
                 <ButtonContainer>
                   <button type="submit" disabled={isSubmitting || isEmpty}>
