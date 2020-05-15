@@ -11,10 +11,10 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-const MyInput = ({ name, value, type, errors, handleChange }) => (
+const MyInput = ({ name, type, errors, handleChange }) => (
   <div>
     <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>
-    <input name={name} value={value} type={type} id={name} required />
+    <input name={name} type={type} id={name} required />
   </div>
 )
 
@@ -33,14 +33,14 @@ export const Contact = ({ location }) => {
           >
             <input type="hidden" name="form-name" value="new-contact" />
             <input type="hidden" name="bot-field" />
-            <MyInput name="name" type="text" value={name} />
-            <MyInput name="email" type="email" value={email} />
-            <MyInput name="subject" type="text" value={subject} />
+            <div data-netlify-recaptcha="true"></div>
+            <MyInput name="name" type="text" />
+            <MyInput name="email" type="email" />
+            <MyInput name="subject" type="text" />
             <div>
               <label htmlFor="message">Message</label>
               <textarea
                 type="textarea"
-                value={message}
                 name="message"
                 rows={4}
                 required
