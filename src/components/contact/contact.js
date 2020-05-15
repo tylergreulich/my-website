@@ -1,6 +1,4 @@
-import Axios from "axios"
 import { Field, Formik } from "formik"
-import qs from "qs"
 import React from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { Element } from "react-scroll"
@@ -55,42 +53,42 @@ export const Contact = ({ location }) => {
   const [formReset, setFormReset] = React.useState({})
   const [errMsg, setErrMsg] = React.useState("")
 
-  React.useEffect(() => {
-    const handleSubmit = async (formValues, token) => {
-      const data = {
-        ...formValues,
-        "g-recaptcha-response": token,
-      }
+  // React.useEffect(() => {
+  //   const handleSubmit = async (formValues, token) => {
+  //     const data = {
+  //       ...formValues,
+  //       "g-recaptcha-response": token,
+  //     }
 
-      const options = {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        data: qs.stringify(data),
-        url: "/",
-      }
+  //     const options = {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //       data: qs.stringify(data),
+  //       url: "/",
+  //     }
 
-      console.log({ DATA: data, OPTS: options })
+  //     console.log({ DATA: data, OPTS: options })
 
-      try {
-        const r = await Axios(options)
-        console.log(r)
-        setIsSubmitting(false)
-        setMsgSent(true)
+  //     try {
+  //       const r = await Axios(options)
+  //       console.log(r)
+  //       setIsSubmitting(false)
+  //       setMsgSent(true)
 
-        await new Promise(() => {
-          setTimeout(() => {
-            setMsgSent(false)
-          }, 2500)
-        })
-      } catch (e) {
-        setErrMsg(e.message)
-      }
-    }
+  //       await new Promise(() => {
+  //         setTimeout(() => {
+  //           setMsgSent(false)
+  //         }, 2500)
+  //       })
+  //     } catch (e) {
+  //       setErrMsg(e.message)
+  //     }
+  //   }
 
-    if (token) {
-      handleSubmit(formValues, token)
-    }
-  }, [formReset, formValues, token])
+  //   if (token) {
+  //     handleSubmit(formValues, token)
+  //   }
+  // }, [formReset, formValues, token])
 
   const resetReCaptcha = async () => {
     console.log("resetting...")
@@ -122,6 +120,15 @@ export const Contact = ({ location }) => {
       .join("&")
   }
 
+  const serialize = function (obj) {
+    var str = []
+    for (var p in obj)
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]))
+      }
+    return str.join("&")
+  }
+
   return (
     <Element name="contact-me">
       <ContactText>Contact Me</ContactText>
@@ -136,17 +143,15 @@ export const Contact = ({ location }) => {
             "form-name": "contact",
           }}
           onSubmit={values => {
-            const form = this.ContactForm.current
             fetch("/", {
               method: "POST",
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: this.encode({
-                "form-name": form.getAttribute("name"),
-                ...this.state,
+              body: serialize({
+                ...values,
               }),
             })
-              .then(() => navigate("/"))
-              .catch(error => alert(error))
+              .then(res => console.log("Success"))
+              .catch(error => console.error(error))
           }}
           validationSchema={validationSchema}
           validateOnChange
