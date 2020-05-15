@@ -66,11 +66,12 @@ export const Contact = ({ location }) => {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         data: qs.stringify(data),
-        url: "/",
+        url: "https://tylergreulich.com/",
       }
 
       try {
-        await Axios(options)
+        const r = await Axios(options)
+        console.log(r)
         setIsSubmitting(false)
         setMsgSent(true)
 
@@ -147,21 +148,9 @@ export const Contact = ({ location }) => {
             "form-name": "contact",
           }}
           onSubmit={values => {
-            fetch("/", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: encode({ "form-name": "contact", ...values }),
-            })
-              .then(() => {
-                alert("Success")
-              })
-              .catch(() => {
-                alert("Error")
-              })
-
-            // setIsSubmitting(true)
-            // setFormValues({ ...values })
-            // setExecuting(true)
+            setIsSubmitting(true)
+            setFormValues({ ...values })
+            setExecuting(true)
             recaptchaRef.current.execute()
           }}
           validationSchema={validationSchema}
