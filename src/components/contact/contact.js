@@ -29,6 +29,7 @@ export const Contact = ({ location }) => {
           method="post"
           action="#"
           data-netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
         >
           <input type="hidden" name="bot-field" />{" "}
           <input type="hidden" name="form-name" value="contactt" />
