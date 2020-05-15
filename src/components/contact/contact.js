@@ -90,20 +90,6 @@ export const Contact = ({ location }) => {
     }
   }, [formReset, formValues, token])
 
-  const resetEverything = resetForm => {
-    if (rcError) {
-      setRcError(false)
-    }
-
-    if (resetForm) {
-      setMsgSent(false)
-      setErrMsg(false)
-      resetForm()
-    }
-
-    resetReCaptcha()
-  }
-
   const resetReCaptcha = async () => {
     console.log("resetting...")
     await recaptchaRef.current.reset()
@@ -135,7 +121,7 @@ export const Contact = ({ location }) => {
   }
 
   return (
-    <Element name="contact">
+    <Element name="contact-me">
       <ContactText>Contact Me</ContactText>
       <FormWrapper>
         <Formik
@@ -178,9 +164,9 @@ export const Contact = ({ location }) => {
               <>
                 <StyledForm
                   name="contact"
-                  data-netlify={true}
+                  data-netlify="true"
                   data-netlify-honeypot="bot-field"
-                  data-netlify-recaptcha={true}
+                  data-netlify-recaptcha="true"
                 >
                   <Field type="hidden" name="form-name" value="contact" />
                   <Field type="hidden" name="bot-field" />
@@ -240,7 +226,7 @@ export const Contact = ({ location }) => {
                   <ReCAPTCHA
                     sitekey={process.env.GATSBY_RECAPTCHA_KEY}
                     ref={recaptchaRef}
-                    data-netlify-recaptcha="true"
+                    // data-netlify-recaptcha="true"
                     onError={onError}
                     onExpire={onExpire}
                     size="invisible"

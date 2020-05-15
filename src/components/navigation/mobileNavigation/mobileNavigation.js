@@ -31,7 +31,7 @@ export const MobileNavigation = ({
         </li>
         <li>
           <MobileNavLink
-            to="contact"
+            to="contact-me"
             smooth={true}
             duration={750}
             offset={-125}

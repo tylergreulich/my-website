@@ -140,7 +140,7 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
               </li>
               <li>
                 <NavLink
-                  to="contact"
+                  to="contact-me"
                   smooth={true}
                   duration={750}
                   offset={-75}
