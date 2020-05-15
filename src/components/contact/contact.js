@@ -69,6 +69,8 @@ export const Contact = ({ location }) => {
         url: "/",
       }
 
+      console.log({ DATA: data, OPTS: options })
+
       try {
         const r = await Axios(options)
         console.log(r)
@@ -247,9 +249,6 @@ export const Contact = ({ location }) => {
                         : "Send Message"}
                     </button>
                   </ButtonContainer>
-                </StyledForm>
-                <StyledForm name="netlifytest" data-netlify="true">
-                  <Field type="hidden" name="form-name" value="contact" />
                 </StyledForm>
               </>
             )
