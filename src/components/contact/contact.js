@@ -52,6 +52,7 @@ export const Contact = ({ location }) => {
             subject: "",
             message: "",
           }}
+          onSubmit={() => console.log("submitted")}
           validationSchema={validationSchema}
           validateOnChange
         >
