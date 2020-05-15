@@ -114,6 +114,13 @@ export const Contact = ({ location }) => {
     resetReCaptcha()
   }
 
+  const onVerify = token => {
+    console.log("verified...")
+    setToken(token)
+    setVerified(true)
+    setExecuting(false)
+  }
+
   return (
     <Element name="contact">
       <ContactText>Contact Me</ContactText>
@@ -225,6 +232,7 @@ export const Contact = ({ location }) => {
                     onError={onError}
                     onExpire={onExpire}
                     size="invisible"
+                    onChange={onVerify}
                     badge="inline"
                   />
                   {executing && (
