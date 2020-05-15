@@ -70,11 +70,15 @@ export const Contact = ({ location }) => {
       }
 
       try {
-        console.log("trying")
-        const r = await Axios(options)
-        console.log(r)
-        isSubmitting(false)
+        await Axios(options)
+        setIsSubmitting(false)
         setMsgSent(true)
+
+        await new Promise(() => {
+          setTimeout(() => {
+            setMsgSent(false)
+          }, 2500)
+        })
       } catch (e) {
         setErrMsg(e.message)
       }
@@ -165,15 +169,14 @@ export const Contact = ({ location }) => {
 
             return (
               <>
-                <Field type="hidden" name="form-name" />
-                <Field type="hidden" name="bot-field" />
                 <StyledForm
-                  method="POST"
                   name="contact"
-                  data-netlify="true"
+                  data-netlify={true}
                   data-netlify-honeypot="bot-field"
-                  data-netlify-recaptcha="true"
+                  data-netlify-recaptcha={true}
                 >
+                  <Field type="hidden" name="form-name" />
+                  <Field type="hidden" name="bot-field" />
                   <MyInput
                     name="name"
                     type="text"
