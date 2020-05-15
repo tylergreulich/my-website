@@ -1,5 +1,8 @@
-import { Formik } from "formik"
+import Axios from "axios"
+import { Field, Formik } from "formik"
+import qs from "qs"
 import React from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { Element } from "react-scroll"
 import * as yup from "yup"
 import {
@@ -23,6 +26,8 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
+const recaptchaRef = React.createRef()
+
 const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
   <div>
     <label htmlFor={name}>{capitalizeFirstLetter(name)}</label>
@@ -40,7 +45,72 @@ const MyInput = ({ name, value, type, touched, errors, handleChange }) => (
 )
 
 export const Contact = ({ location }) => {
-  const [status, setStatus] = React.useState("")
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [executing, setExecuting] = React.useState(false)
+  const [formValues, setFormValues] = React.useState({})
+  const [verified, setVerified] = React.useState(false)
+  const [token, setToken] = React.useState("")
+  const [rcError, setRcError] = React.useState("")
+  const [msgSent, setMsgSent] = React.useState(false)
+  const [formReset, setFormReset] = React.useState({})
+  const [errMsg, setErrMsg] = React.useState("")
+
+  React.useEffect(() => {
+    const handleSubmit = async (formValues, token) => {
+      const data = {
+        ...formValues,
+        "g-recaptcha-response": token,
+      }
+
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        data: qs.stringify(data),
+        url: "/",
+      }
+
+      try {
+        await Axios(options)
+        setMsgSent(true)
+        formReset()
+      } catch (e) {
+        setErrMsg(e.message)
+      }
+    }
+    if (token) {
+      handleSubmit(formValues, token)
+    }
+  }, [formReset, formValues, token])
+
+  const resetEverything = resetForm => {
+    if (rcError) {
+      setRcError(false)
+    }
+    if (resetForm) {
+      setMsgSent(false)
+      setErrMsg(false)
+      resetForm()
+    }
+    resetReCaptcha()
+  }
+
+  const resetReCaptcha = async () => {
+    console.log("resetting...")
+    await recaptchaRef.current.reset()
+    setVerified(false)
+  }
+
+  const onError = () => {
+    console.log("error...")
+    setRcError(true)
+  }
+
+  const onExpire = () => {
+    console.log("expired...")
+    console.log("resetting...")
+    resetReCaptcha()
+  }
+
   return (
     <Element name="contact">
       <ContactText>Contact Me</ContactText>
@@ -51,18 +121,25 @@ export const Contact = ({ location }) => {
             email: "",
             subject: "",
             message: "",
+            "bot-field": "",
+            "form-name": "contact",
           }}
-          onSubmit={() => console.log("submitted")}
+          onSubmit={values => {
+            setIsSubmitting(true)
+            setFormValues({ ...values })
+            setExecuting(true)
+            recaptchaRef.current.execute()
+          }}
           validationSchema={validationSchema}
           validateOnChange
         >
           {({
             values,
-            isSubmitting,
             errors,
             handleChange,
             touched,
             setFieldTouched,
+            resetForm,
           }) => {
             const isEmpty =
               values.name.length === 0 ||
@@ -75,71 +152,112 @@ export const Contact = ({ location }) => {
               errors.name
 
             return (
-              <StyledForm method="POST" data-netlify="true" name="contact">
-                <MyInput
-                  name="name"
-                  type="text"
-                  errors={errors}
-                  touched={touched}
-                  value={values.name}
-                  handleChange={e => {
-                    setFieldTouched("name", true)
-                    handleChange(e)
-                  }}
-                />
-                <MyInput
-                  name="email"
-                  type="email"
-                  errors={errors}
-                  touched={touched}
-                  value={values.email}
-                  handleChange={e => {
-                    setFieldTouched("email", true)
-                    handleChange(e)
-                  }}
-                />
-                <MyInput
-                  name="subject"
-                  type="text"
-                  errors={errors}
-                  touched={touched}
-                  value={values.subject}
-                  handleChange={e => {
-                    setFieldTouched("subject", true)
-                    handleChange(e)
-                  }}
-                />
-                <div>
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    type="textarea"
-                    value={values.message}
-                    name="message"
-                    rows={4}
-                    required
-                    onChange={e => {
-                      setFieldTouched("message", true)
+              <>
+                <Field type="hidden" name="form-name" />
+                <Field type="hidden" name="bot-field" />
+                <StyledForm
+                  method="POST"
+                  name="contact"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                  data-netlify-recaptcha="true"
+                >
+                  <MyInput
+                    name="name"
+                    type="text"
+                    errors={errors}
+                    touched={touched}
+                    value={values.name}
+                    handleChange={e => {
+                      setFieldTouched("name", true)
                       handleChange(e)
                     }}
-                    id="message"
                   />
-                  <strong>
-                    {touched.message && errors.message ? errors.message : null}
-                  </strong>
-                </div>
-                <div>
-                  <div netlify-recaptcha="true" />
-                </div>
-                <ButtonContainer>
-                  <button type="submit" disabled={isSubmitting || isEmpty}>
-                    {status?.length
-                      ? status
-                      : isSubmitting
-                      ? "sending..."
-                      : "send message"}
-                  </button>
-                </ButtonContainer>
-              </StyledForm>
+                  <MyInput
+                    name="email"
+                    type="email"
+                    errors={errors}
+                    touched={touched}
+                    value={values.email}
+                    handleChange={e => {
+                      setFieldTouched("email", true)
+                      handleChange(e)
+                    }}
+                  />
+                  <MyInput
+                    name="subject"
+                    type="text"
+                    errors={errors}
+                    touched={touched}
+                    value={values.subject}
+                    handleChange={e => {
+                      setFieldTouched("subject", true)
+                      handleChange(e)
+                    }}
+                  />
+                  <div>
+                    <label htmlFor="message">Message</label>
+                    <textarea
+                      type="textarea"
+                      value={values.message}
+                      name="message"
+                      rows={4}
+                      required
+                      onChange={e => {
+                        setFieldTouched("message", true)
+                        handleChange(e)
+                      }}
+                      id="message"
+                    />
+                    <strong>
+                      {touched.message && errors.message
+                        ? errors.message
+                        : null}
+                    </strong>
+                  </div>
+                  <ReCAPTCHA
+                    sitekey={process.env.GATSBY_RECAPTCHA_KEY}
+                    onChange={value => console.log(value)}
+                    ref={recaptchaRef}
+                    data-netlify-recaptcha="true"
+                    onError={onError}
+                    onExpire={onExpire}
+                    size="invisible"
+                    badge="inline"
+                  />
+                  {executing && (
+                    <span className={`badge badge-primary mx-2 p-2`}>
+                      executing
+                    </span>
+                  )}
+                  {rcError && (
+                    <span className={`badge badge-primary mx-2 p-2`}>
+                      error
+                    </span>
+                  )}
+                  {rcError && (
+                    <button
+                      className="btn btn-link text-dark"
+                      onClick={() => resetEverything(resetForm)}
+                    >
+                      reset
+                    </button>
+                  )}
+                  {(msgSent || errMsg) && (
+                    <button
+                      className="btn btn-lg btn-link text-dark"
+                      onClick={() => resetEverything(resetForm)}
+                    >
+                      reset form
+                    </button>
+                  )}
+                  <ButtonContainer>
+                    <button type="submit" disabled={isEmpty}>
+                      Send Message
+                    </button>
+                  </ButtonContainer>
+                </StyledForm>
+              </>
             )
           }}
         </Formik>
