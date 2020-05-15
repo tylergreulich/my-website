@@ -54,7 +54,6 @@ export const Contact = ({ location }) => {
           }}
           validationSchema={validationSchema}
           validateOnChange
-          name="contact"
         >
           {({
             values,
@@ -75,7 +74,7 @@ export const Contact = ({ location }) => {
               errors.name
 
             return (
-              <StyledForm method="POST" data-netlify="true">
+              <StyledForm method="POST" data-netlify="true" name="contact">
                 <MyInput
                   name="name"
                   type="text"
@@ -128,7 +127,7 @@ export const Contact = ({ location }) => {
                   </strong>
                 </div>
                 <div>
-                  <div data-netlify-recaptcha="true" />
+                  <div netlify-recaptcha="true" />
                 </div>
                 <ButtonContainer>
                   <button type="submit" disabled={isSubmitting || isEmpty}>
