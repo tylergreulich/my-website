@@ -83,7 +83,7 @@ export const PortfolioButton = styled(Link)`
   padding: 0.8rem 1.6rem;
   display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
