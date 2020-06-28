@@ -5,11 +5,10 @@ export const PortfolioItemWrapper = styled.div`
   margin-bottom: ${({ last }) => (last ? 0 : "3.5rem")};
   display: flex;
   background-color: ${({ theme }) => theme.main.grey};
-  height: 500px;
-  padding: 2rem;
+  height: 600px;
 
   ${media().lg`
-    height: 600px;
+    height: auto;
     padding: 0;
   `}
 
@@ -18,10 +17,34 @@ export const PortfolioItemWrapper = styled.div`
   `}
 `
 
-export const ImageWrapper = styled.a`
+export const ImageWrapper = styled.div`
   width: 50%;
   height: 100%;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  justify-content: center;
+  flex-direction: column;
+  background-color: ${({ theme }) => theme.main.primary};
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    color: ${({ theme }) => theme.main.body};
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  div {
+    margin: 0.5rem 0;
+    a {
+      color: ${({ theme }) => theme.main.lightGrey};
+    }
+  }
+
+  span {
+    color: ${({ theme }) => theme.main.dateText};
+  }
 
   ${media().lg`
     height: 50%;
@@ -32,9 +55,6 @@ export const ImageWrapper = styled.a`
 export const PortfolioImage = styled.div`
   width: 100%;
   height: 100%;
-
-  background: ${({ imgUrl }) => `url(${imgUrl}) no-repeat center center`};
-  background-size: cover;
 `
 
 export const PortfolioAdCopy = styled.div`
@@ -42,20 +62,51 @@ export const PortfolioAdCopy = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 2.5rem;
+  padding: 2rem;
+
+  h2 {
+    text-align: center;
+    font-size: 1.25rem;
+    color: ${({ theme }) => theme.main.secondary};
+  }
+
+  ul {
+    padding: 0 2.5rem;
+    margin: 0;
+
+    li {
+      color: ${({ theme }) => theme.main.secondary};
+      &:nth-of-type(2) {
+        margin: 1rem 0;
+      }
+
+
+      span {
+        color: ${({ theme }) => theme.main.text};
+        font-size: 1rem;
+      }
+    }
+  }
 
   ${media().lg`
     padding: 0;
     width: 100%;
     height: 50%;
-    display: grid;
-    grid-template-columns: 70% 30%;
-    grid-template-rows: repeat(2, 50%);
 
     #projectInfo {
-      padding: 1.5rem;
+      padding: 2rem;
       grid-row-end: 3;
       grid-row-start: 1;
+
+      ul {
+        padding: 0 3.5rem;
+
+        li {
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
     }
   `}
 

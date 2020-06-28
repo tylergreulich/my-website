@@ -6,7 +6,7 @@ import { PortfolioItem } from "./portfolioItem/portfolioItem"
 
 export const Portfolio = () => {
   return (
-    <Element name="portfolio">
+    <Element name="my-work">
       <PortfolioText>My Work</PortfolioText>
 
       <PortfolioContainer>

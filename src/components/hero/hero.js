@@ -5,8 +5,9 @@ import {
   ContentArea,
   PortfolioButton,
   Profile,
-  ProfileSection,
+  ProfileSection
 } from "./hero.styles"
+
 
 const Hero = () => {
   return (
@@ -22,18 +23,16 @@ const Hero = () => {
             My name is Tyler Greulich and I'm a Full-Stack Web Developer that
             creates websites with a focus on UI / UX while writing clean,
             elegant, maintainable code. I prefer using React and Node but will
-            quickly learn whatever technology the project requires. Currently
-            I'm looking to get hired at a company that'll constantly challenge
-            me to get outside of my comfort zone and learn new things.
+            quickly learn whatever technology the project requires.
           </p>
           <ButtonWrapper>
             <PortfolioButton
-              to="portfolio"
+              to="my-work"
               offset={-75}
               smooth={true}
               duration={500}
             >
-              Portfolio
+              My Work
             </PortfolioButton>
             <BlogButton to="blog" offset={-75} smooth={true} duration={500}>
               Blog

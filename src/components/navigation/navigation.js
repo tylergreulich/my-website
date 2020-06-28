@@ -13,7 +13,7 @@ import {
   NavLink,
   NavLinks,
   ThemeToggle,
-  ThemeToggleWrapper,
+  ThemeToggleWrapper
 } from "./navigation.styles"
 
 const HomeLink = styled(Link)`
@@ -84,74 +84,74 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
             <ThemeToggle icon={faSun} />
           </ThemeToggleWrapper>
         ) : (
-          <ThemeToggleWrapper
-            onClick={() => {
-              setIsDarkMode(false)
-              localStorage.setItem("isDarkMode", false)
-            }}
-          >
-            <ThemeToggle icon={faMoon} />
-          </ThemeToggleWrapper>
-        )}
+            <ThemeToggleWrapper
+              onClick={() => {
+                setIsDarkMode(false)
+                localStorage.setItem("isDarkMode", false)
+              }}
+            >
+              <ThemeToggle icon={faMoon} />
+            </ThemeToggleWrapper>
+          )}
         {isBlogPost ? (
           <li>
             <HomeLink to="/">Home</HomeLink>
           </li>
         ) : (
-          <>
-            <MobileNavigation
-              handleClick={handleIsMobileActive}
-              isMobileNavActive={isMobileNavActive}
-              handleIsMobileActive={handleIsMobileActive}
-            />
-            <MainNav>
-              <li>
-                <NavLink
-                  to="portfolio"
-                  smooth={true}
-                  duration={750}
-                  offset={-75}
-                  spy={true}
-                >
-                  Portfolio
+            <>
+              <MobileNavigation
+                handleClick={handleIsMobileActive}
+                isMobileNavActive={isMobileNavActive}
+                handleIsMobileActive={handleIsMobileActive}
+              />
+              <MainNav>
+                <li>
+                  <NavLink
+                    to="my-work"
+                    smooth={true}
+                    duration={750}
+                    offset={-75}
+                    spy={true}
+                  >
+                    Work
                 </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="skills"
-                  smooth={true}
-                  duration={750}
-                  offset={-75}
-                  spy={true}
-                >
-                  Skills
+                </li>
+                <li>
+                  <NavLink
+                    to="skills"
+                    smooth={true}
+                    duration={750}
+                    offset={-75}
+                    spy={true}
+                  >
+                    Skills
                 </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="blog"
-                  smooth={true}
-                  duration={750}
-                  offset={-75}
-                  spy={true}
-                >
-                  Blog
+                </li>
+                <li>
+                  <NavLink
+                    to="blog"
+                    smooth={true}
+                    duration={750}
+                    offset={-75}
+                    spy={true}
+                  >
+                    Blog
                 </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="contact-me"
-                  smooth={true}
-                  duration={750}
-                  offset={-75}
-                  spy={true}
-                >
-                  Contact
+                </li>
+                <li>
+                  <NavLink
+                    to="contact-me"
+                    smooth={true}
+                    duration={750}
+                    offset={-75}
+                    spy={true}
+                  >
+                    Contact
                 </NavLink>
-              </li>
-            </MainNav>
-          </>
-        )}
+                </li>
+              </MainNav>
+            </>
+          )}
       </NavLinks>
     </Header>
   )

@@ -1,15 +1,23 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useLocation } from "@reach/router"
 import React from "react"
 import { AltContact, FooterContainer, GithubWrapper } from "./footer.styles"
 
 export const Footer = () => {
+
+  const location = useLocation()
+
+  const isBlogPost = location.pathname.includes('posts')
+
   return (
     <>
-      <AltContact>
-        Or you can shoot me a message at{" "}
-        <a href="mailto:tyler@tylergreulich.com">tyler@tylergreulich.com</a>
-      </AltContact>
+      {isBlogPost ? null : (
+        <AltContact>
+          Or you can shoot me a message at{" "}
+          <a href="mailto:tyler@tylergreulich.com">tyler@tylergreulich.com</a>
+        </AltContact>
+      )}
       <FooterContainer>
         <GithubWrapper>
           <a

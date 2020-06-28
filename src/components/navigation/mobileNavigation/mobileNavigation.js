@@ -7,7 +7,7 @@ import {
   HamburgerIcon,
   HamburgerIconWrapper,
   MobileNavLink,
-  MobileNavLinkContainer,
+  MobileNavLinkContainer
 } from "./mobileNavigation.styles"
 
 export const MobileNavigation = ({
@@ -20,13 +20,13 @@ export const MobileNavigation = ({
       <MobileNavLinkContainer>
         <li>
           <MobileNavLink
-            to="portfolio"
+            to="my-work"
             smooth={true}
             duration={750}
             offset={-125}
             spy={true}
           >
-            Portfolio
+            Work
           </MobileNavLink>
         </li>
         <li>

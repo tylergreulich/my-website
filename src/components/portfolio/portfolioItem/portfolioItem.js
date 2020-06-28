@@ -2,51 +2,49 @@ import React from "react"
 import {
   ImageWrapper,
   PortfolioAdCopy,
-  PortfolioImage,
-  PortfolioItemButton,
-  PortfolioItemButtonWrapper,
-  PortfolioItemWrapper,
-  Tech,
-  TechContainer,
-  TechList,
+
+
+
+  PortfolioItemWrapper
 } from "./portfolioItem.styles"
 
 export const PortfolioItem = ({
   last = false,
-  title,
-  description,
+  jobTitle,
+  company,
+  companyUrl,
   tech,
-  githubUrl,
   liveUrl,
-  imgUrl,
+  responsibilities,
+  date,
+  imgUrl = null,
 }) => {
   return (
     <PortfolioItemWrapper last={last}>
-      <ImageWrapper href={liveUrl} target="_blank" rel="noopener noreferrer">
-        <PortfolioImage imgUrl={imgUrl} />
+      <ImageWrapper>
+        <h2>{jobTitle}</h2>
+        <div>
+          <a href={companyUrl} target="_blank" rel="noreferrer" >
+            @{company}
+          </a>
+        </div>
+        <span>{date}</span>
       </ImageWrapper>
       <PortfolioAdCopy>
         <div id="projectInfo">
-          <h4>{title}</h4>
-          <p>{description}</p>
+          <h2>Responsibilites</h2>
+          <ul>
+            {responsibilities.map(responsibility => (
+              <React.Fragment key={responsibility}>
+                <li>
+                  <span>
+                    {responsibility}
+                  </span>
+                </li>
+              </React.Fragment>
+            ))}
+          </ul>
         </div>
-        <TechContainer>
-          <Tech>Tech</Tech>
-          <TechList>{tech}</TechList>
-        </TechContainer>
-        <PortfolioItemButtonWrapper>
-          <PortfolioItemButton href={liveUrl}>Live Site</PortfolioItemButton>
-          <PortfolioItemButton
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              marginTop: "1rem",
-            }}
-          >
-            View Code
-          </PortfolioItemButton>
-        </PortfolioItemButtonWrapper>
       </PortfolioAdCopy>
     </PortfolioItemWrapper>
   )
