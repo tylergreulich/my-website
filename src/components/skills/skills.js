@@ -13,6 +13,8 @@ import {
   MySQLLogo,
   ReduxLogo,
   TypeScriptLogo,
+  GolangLogo,
+  MongoLogo
 } from "assets/svg/svgIcons"
 import React from "react"
 import { Element } from "react-scroll"
@@ -55,8 +57,16 @@ export const Skills = () => {
           <BackendText>Backend</BackendText>
           <BackendGrid>
             <SkillsIcon color="secondary" icon={faNodeJs} text="Node.js" />
-            <SkillsIcon color="secondary" icon={faPhp} text="PHP" />
-            <SkillsIcon color="secondary" icon={faLaravel} text="Laravel" />
+            {/* <SkillsIcon color="secondary" icon={faPhp} text="PHP" /> */}
+            <LogoContainer>
+              <GolangLogo />
+              <p>Golang</p>
+            </LogoContainer>
+            {/* <SkillsIcon color="secondary" icon={faLaravel} text="Laravel" /> */}
+            <LogoContainer>
+              <MongoLogo />
+              <p>MongoDB</p>
+            </LogoContainer>
             <LogoContainer color="secondary">
               <MySQLLogo />
               <p>MySQL</p>
