@@ -43,7 +43,7 @@ export const ImageWrapper = styled.div`
   }
 
   span {
-    color: ${({ theme }) => theme.main.dateText};
+    color: ${({ theme }) => theme.main.body};
   }
 
   ${media().lg`
