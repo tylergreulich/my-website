@@ -18,6 +18,7 @@ export const BackdropColor = styled.ul`
   flex-direction: column;
   transform: ${({ isMobileNavActive }) =>
     `translateX(${isMobileNavActive ? "0" : "100%"})`};
+  margin: 0;
 
   li {
     color: ${({ theme }) => theme.main.body};
