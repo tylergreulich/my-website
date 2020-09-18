@@ -1,6 +1,6 @@
 export const portfolioItemsData = [
   {
-    jobTitle: 'Full-Stack Web Developer',
+    jobTitle: 'Full-Stack Developer',
     company: 'Yodi',
     companyUrl: 'https://www.yodi.tech/',
     date: 'June 2019 - Present',
