@@ -18,7 +18,7 @@ const Hero = () => {
             Tyler
             <br /> <span>Greulich</span>
           </h1>
-          <h5>Web Developer</h5>
+          <h2>Web Developer</h2>
           <p>
             My name is Tyler Greulich and I'm a Full-Stack Web Developer that
             creates websites with a focus on UI / UX while writing clean,

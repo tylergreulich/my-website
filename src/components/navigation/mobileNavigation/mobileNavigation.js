@@ -7,17 +7,50 @@ import {
   HamburgerIcon,
   HamburgerIconWrapper,
   MobileNavLink,
-  MobileNavLinkContainer
+  MobileNavLinkContainer,
+  HamburgerIconContainer
 } from "./mobileNavigation.styles"
+
+import {
+  Header,
+  LogoWrapper,
+  MainNav,
+  NavLink,
+  NavLinks,
+  ThemeToggle,
+  ThemeToggleWrapper
+} from "../navigation.styles"
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons"
 
 export const MobileNavigation = ({
   handleClick,
   isMobileNavActive,
   handleIsMobileActive,
+  isDarkMode,
+  setIsDarkMode
 }) => {
   return (
     <>
       <MobileNavLinkContainer>
+        {!isDarkMode ? (
+          <ThemeToggleWrapper
+            onClick={() => {
+              setIsDarkMode(true)
+              localStorage.setItem("isDarkMode", true)
+            }}
+          >
+            <ThemeToggle icon={faSun} />
+          </ThemeToggleWrapper>
+        ) : (
+            <ThemeToggleWrapper
+              onClick={() => {
+                setIsDarkMode(false)
+                localStorage.setItem("isDarkMode", false)
+              }}
+            >
+              <ThemeToggle icon={faMoon} />
+            </ThemeToggleWrapper>
+          )}
         <li>
           <MobileNavLink
             to="my-work"
@@ -40,21 +73,23 @@ export const MobileNavigation = ({
             Contact
           </MobileNavLink>
         </li>
+        <CloseIconWrapper isMobileNavActive={isMobileNavActive}>
+          <CloseIcon
+            icon={faTimes}
+            isMobileNavActive={isMobileNavActive}
+            onClick={handleClick}
+          />
+        </CloseIconWrapper>
+        <HamburgerIconWrapper isMobileNavActive={isMobileNavActive}>
+          <HamburgerIcon
+            icon={faBars}
+            isMobileNavActive={isMobileNavActive}
+            onClick={handleClick}
+          />
+        </HamburgerIconWrapper>
       </MobileNavLinkContainer>
-      <CloseIconWrapper isMobileNavActive={isMobileNavActive}>
-        <CloseIcon
-          icon={faTimes}
-          isMobileNavActive={isMobileNavActive}
-          onClick={handleClick}
-        />
-      </CloseIconWrapper>
-      <HamburgerIconWrapper isMobileNavActive={isMobileNavActive}>
-        <HamburgerIcon
-          icon={faBars}
-          isMobileNavActive={isMobileNavActive}
-          onClick={handleClick}
-        />
-      </HamburgerIconWrapper>
+      {/* <HamburgerIconContainer> */}
+      {/* </HamburgerIconContainer> */}
       <Backdrop
         isMobileNavActive={isMobileNavActive}
         handleIsMobileActive={handleIsMobileActive}

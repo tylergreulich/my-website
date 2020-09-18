@@ -93,18 +93,13 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
               <ThemeToggle icon={faMoon} />
             </ThemeToggleWrapper>
           )}
-        {isBlogPost ? (
-          <li>
-            <HomeLink to="/">Home</HomeLink>
-          </li>
-        ) : (
-            <>
-              <MobileNavigation
-                handleClick={handleIsMobileActive}
-                isMobileNavActive={isMobileNavActive}
-                handleIsMobileActive={handleIsMobileActive}
-              />
-              <MainNav>
+        <>
+          {isBlogPost ? (
+            <li>
+              <HomeLink to="/">Home</HomeLink>
+            </li>
+          ) : (
+              <>
                 <li>
                   <NavLink
                     to="my-work"
@@ -149,10 +144,19 @@ export const Navigation = ({ setIsDarkMode, isDarkMode }) => {
                     Contact
                 </NavLink>
                 </li>
-              </MainNav>
-            </>
-          )}
+              </>
+            )}
+        </>
       </NavLinks>
+      <>
+        <MobileNavigation
+          handleClick={handleIsMobileActive}
+          isMobileNavActive={isMobileNavActive}
+          handleIsMobileActive={handleIsMobileActive}
+          isDarkMode={isDarkMode}
+          setIsDarkMode={setIsDarkMode}
+        />
+      </>
     </Header>
   )
 }

@@ -69,6 +69,16 @@ export const NavLinks = styled.ul`
       color: ${({ theme }) => theme.main.text};
     }
   }
+
+  li:nth-child(1),
+  li:nth-child(2),
+  li:nth-child(3),
+  li:nth-child(4),
+  li:nth-child(5) {
+    ${media().lg`
+      display: none;
+    `}
+  }
 `
 
 export const MainNav = styled.div`

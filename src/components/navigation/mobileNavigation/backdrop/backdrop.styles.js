@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const BackdropColor = styled.div`
+export const BackdropColor = styled.ul`
   background-color: ${({ theme }) => theme.main.primary};
   top: 0;
   left: 0;
@@ -14,6 +14,7 @@ export const BackdropColor = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  list-style: none;
   flex-direction: column;
   transform: ${({ isMobileNavActive }) =>
     `translateX(${isMobileNavActive ? "0" : "100%"})`};

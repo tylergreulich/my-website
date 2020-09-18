@@ -42,7 +42,7 @@ export const Profile = styled.div`
     }
   }
 
-  h5 {
+  h2 {
     font-size: 2rem;
     font-family: Lato;
     margin: 0 0 3rem;

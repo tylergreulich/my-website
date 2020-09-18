@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 export const IconWrapper = styled.li`
   color: ${({ theme }) => theme.main.primary};
-  display: none;
+  display: block;
   font-size: 2rem;
   cursor: pointer;
   margin-left: 1.5rem;
@@ -14,13 +14,21 @@ export const IconWrapper = styled.li`
 export const CloseIconWrapper = styled(IconWrapper)`
   color: ${({ theme }) => theme.main.body};
   display: ${({ isMobileNavActive }) => (isMobileNavActive ? "block" : "none")};
+
+  ul {
+    display : none;
+
+  }
+`
+
+export const HamburgerIconContainer = styled.ul`
+  display: none;
+  ${media().lg`
+      display: block !important;
+  `}
 `
 
 export const HamburgerIconWrapper = styled(IconWrapper)`
-  display: none !important;
-  ${media().lg`
-    display: block !important;
-  `}
 `
 
 export const HamburgerIcon = styled(FontAwesomeIcon)`
@@ -42,11 +50,15 @@ export const CloseIcon = styled(HamburgerIcon)`
   }
 `
 
-export const MobileNavLinkContainer = styled.div`
+export const MobileNavLinkContainer = styled.ul`
   display: none;
+  list-style: none;
+  color: ${({ theme }) => theme.main.primary};
 
   ${media().lg`
     display: flex;
+    align-items: center;
+    margin-bottom: 0;
   `}
 
   li {

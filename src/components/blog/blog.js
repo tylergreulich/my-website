@@ -44,18 +44,18 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
           if (featuredImg && featuredImg.childImageSharp) {
             return (
               <Post key={index}>
-                <Link to={`/posts${path}`} id="image">
+                <Link to={`/posts${path}`} id={`image-${title}`} alt={`${title} blog image`}>
                   <Img
                     fluid={featuredImg.childImageSharp.fluid}
                     alt="Featured Blog Image"
                   />
                 </Link>
                 <div>
-                  <Link to={`/posts${path}`}>
+                  <Link to={`/posts${path}`} alt={`${title} blog title`}>
                     <h2>{title}</h2>
                   </Link>
                   <PostDate>{date}</PostDate>
-                  <Link to={`/posts${path}`}>
+                  <Link to={`/posts${path}`} alt={`${node.excerpt}`}>
                     <PostExcerpt>{node.excerpt}</PostExcerpt>
                   </Link>
                 </div>
@@ -76,7 +76,7 @@ export const Blog = React.memo(({ pageInfo, ...props }) => {
         >
           Previous Page
         </PreviousPage>
-        <li>{currentPage}</li>
+        <span>{currentPage}</span>
         <NextPage
           onClick={() => {
             if (currentPage < lastPage) {

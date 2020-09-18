@@ -110,7 +110,7 @@ export const PaginationComponent = styled.div`
   justify-content: center;
   font-family: Lato;
   margin: 2.5rem 0;
-  li {
+  span {
     margin: 0 2rem;
     display: inline-flex;
     align-items: center;
@@ -133,13 +133,13 @@ export const PreviousPage = styled.button`
   background-color: transparent;
   border: 0.25rem solid
     ${({ theme, currentPage }) =>
-      currentPage === 1 ? theme.main.darkGrey : theme.main.secondary};
+    currentPage === 1 ? theme.main.darkGrey : theme.main.secondary};
 
   &:hover {
     color: ${({ theme, currentPage }) =>
-      currentPage === 1 ? theme.main.darkGrey : theme.main.body};
+    currentPage === 1 ? theme.main.darkGrey : theme.main.body};
     background-color: ${({ theme, currentPage }) =>
-      currentPage === 1 ? "none" : theme.main.secondary};
+    currentPage === 1 ? "none" : theme.main.secondary};
   }
 
   color: ${({ theme, currentPage }) =>
@@ -166,15 +166,15 @@ export const NextPage = styled(PreviousPage)`
   background-color: transparent;
   border: 0.25rem solid
     ${({ theme, currentPage, lastPage }) =>
-      currentPage === lastPage ? theme.main.darkGrey : theme.main.secondary};
+    currentPage === lastPage ? theme.main.darkGrey : theme.main.secondary};
 
   &:hover {
     color: ${({ theme, currentPage, lastPage }) =>
-      currentPage === lastPage ? theme.main.darkGrey : theme.main.body};
+    currentPage === lastPage ? theme.main.darkGrey : theme.main.body};
     background-color: ${({ theme, currentPage, lastPage }) =>
-      currentPage === lastPage
-        ? "transparent"
-        : theme.main.secondary} !important;
+    currentPage === lastPage
+      ? "transparent"
+      : theme.main.secondary} !important;
   }
 
   color: ${({ theme, currentPage, lastPage }) =>

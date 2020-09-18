@@ -24,13 +24,14 @@ export const Footer = () => {
             href="https://github.com/tylergreulich"
             rel="noopener noreferrer"
             target="_blank"
+            aria-label="A link to my Github"
           >
-            <FontAwesomeIcon icon={faGithub} />
+            <FontAwesomeIcon icon={faGithub} alt="Github icon" />
           </a>
         </GithubWrapper>
         <span>
           © {new Date().getFullYear()}, Built with
-          <a href="https://www.gatsbyjs.org" rel="noopener noreferrer">
+          <a href="https://www.gatsbyjs.org" rel="noopener noreferrer" aria-label="A link to Gatsby.js">
             Gatsby
           </a>
         </span>
