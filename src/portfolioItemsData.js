@@ -3,7 +3,7 @@ export const portfolioItemsData = [
     jobTitle: 'Full-Stack Developer',
     company: 'Yodi',
     companyUrl: 'https://www.yodi.tech/',
-    date: 'June 2018 - Present',
+    date: 'June 2020 - Present',
     responsibilities: [
       'Created both server-side and statically rendered websites with the React framework Nextjs. Used Redux for state management and Apollo for consuming GraphQL APIs.',
       'Built GraphQL and REST APIs with Nodejs using JavaScript and TypeScript and modified already existing REST APIs.',
