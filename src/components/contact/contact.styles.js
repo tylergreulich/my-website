@@ -28,6 +28,7 @@ export const StyledForm = styled.form`
   width: 75%;
   height: 100%;
   background-color: ${({ theme }) => theme.main.grey};
+  transition: all 0.25s ease-in-out;
   color: ${({ theme }) => theme.body};
   padding: 56px;
   margin-bottom: 0;

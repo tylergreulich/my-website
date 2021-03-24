@@ -32,6 +32,7 @@ export const Post = styled.article`
   margin-bottom: 2rem 0;
   height: 100%;
   background-color: ${({ theme }) => theme.main.grey};
+  transition: all 0.25s ease-in-out;
 
   div {
     padding: 7%;

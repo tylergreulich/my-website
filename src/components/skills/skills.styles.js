@@ -29,6 +29,7 @@ export const FrontendContainer = styled.div`
   width: 100%;
   padding: 2rem;
   background-color: ${({ theme }) => theme.main.grey};
+  transition: all 0.25s ease-in-out;
 `
 
 export const BackendContainer = styled(FrontendContainer)``

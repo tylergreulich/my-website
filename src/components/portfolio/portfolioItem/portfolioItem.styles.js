@@ -26,6 +26,7 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   background-color: ${({ theme }) => theme.main.primary};
+  transition: all 0.25s ease-in-out;
 
   h2 {
     margin: 0;

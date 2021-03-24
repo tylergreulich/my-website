@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Tyler Greulich | Web Developer`,
+    title: `Tyler Greulich | Software Engineer`,
     description: `I am a Fullstack Web Developer with a focus on delivering beautiful UIs with good UX. I mainly do development with React but am open to learning and using other technologies that would be more efficient to use to get the job done.`,
     author: `Tyler Greulich`,
   },
