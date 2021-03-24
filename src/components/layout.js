@@ -7,7 +7,6 @@ import "./layout.css"
 
 const GlobalStyle = createGlobalStyle`
   body {
-  transition: all 0.25s ease-in-out;
     background-color: ${({ theme }) => theme.main.lightGrey};
   }
 `
