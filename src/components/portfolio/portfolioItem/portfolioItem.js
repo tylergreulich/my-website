@@ -19,7 +19,7 @@ export const PortfolioItem = ({
   date,
   imgUrl = null,
 }) => {
-  return (
+  return console.log(jobTitle) || (
     <PortfolioItemWrapper last={last}>
       <ImageWrapper>
         <h2>{jobTitle}</h2>
